@@ -10,6 +10,7 @@ const Resume = () => (
       type="application/pdf"
       height="768px"
       width="100%"
+      title="Kapil Gorve Resume"
     />
   </Layout>
 )

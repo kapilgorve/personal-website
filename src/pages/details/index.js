@@ -16,7 +16,8 @@ const details = ({ data }) => {
     if (node.id === id) {
       post = node.frontmatter
       content = node.html
-    }
+    };
+    return node;
   })
   const images = post.screens.map(s => {
     return {

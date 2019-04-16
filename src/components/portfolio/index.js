@@ -31,7 +31,7 @@ const PortFolio = ({ posts }) => {
                           <img
                             className="card-img-top"
                             src={frontmatter.thumb}
-                            alt="`${frontmatter.title} logo`"
+                            alt={`${frontmatter.title} logo`}
                           />
                         </div>
 
