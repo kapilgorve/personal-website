@@ -34,6 +34,11 @@ const Layout = ({ children }) => (
               content:
                 'ReactJs Freelancer, Frontend Freelancer, Angular Freelancer, Freelance WebDeveloper',
             },
+            {
+              name: 'google-site-verification',
+              content:
+                'wQ_f9X_15oprPRnRxUYGguIh0Hx7VaPbGECLUKMxgJI',
+            },
           ]}
         >
           <html lang="en" />
