@@ -1,0 +1,91 @@
+
+.hero {
+  background: linear-gradient(to right, #cc2b5e, rgba(24, 0, 80, 0.89));
+  color: white;
+}
+.hero .me {
+  padding: 2rem;
+  margin: auto;
+  text-align: justify;
+}
+.hero h1 {
+  padding: 1rem;
+  font-size: 5rem;
+  font-weight: 300;
+}
+.hero p {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+ .hero a{
+   color: white;
+ }
+.hero .pic {
+  padding: 3rem;
+}
+.hero img {
+  opacity: 0.6;
+  border-radius: 2px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.12);
+}
+.about {
+  color: #180050;
+}
+.about .title {
+  display: flex;
+  align-items: center;
+}
+.about h2 {
+  padding: 3rem 0rem;
+  font-size: 5rem;
+  font-weight: 300;
+  text-align: center;
+}
+.about p {
+  padding: 3rem 0rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.why {
+  background: linear-gradient(to right, #cc2b5e, rgba(24, 0, 80, 0.89));
+  color: white;
+}
+.why .title {
+  display: flex;
+  align-items: center;
+}
+.why h2 {
+  padding: 3rem 0rem;
+  font-size: 5rem;
+  font-weight: 300;
+  text-align: center;
+}
+.why p {
+  padding: 3rem 0rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.services {
+  padding-bottom: 2rem;
+}
+.services h2 {
+  padding-top: 3rem;
+  font-size: 5rem;
+  font-weight: 300;
+  text-align: center;
+}
+.services h3 {
+  font-size: 1.8rem;
+  text-align: center;
+}
+.services img {
+  height: 80px;
+  margin-top: 1rem;
+}
+.services .card {
+  margin-top: 4rem;
+  background: linear-gradient(to right, rgba(204, 43, 94, 0.8), rgba(24, 0, 80, 0.77));
+  color: white;
+  box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
+  border: none;
+}

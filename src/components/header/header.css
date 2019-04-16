@@ -1,0 +1,10 @@
+nav {
+  background: linear-gradient(to right, #cc2b5e, rgba(24, 0, 80, 0.89));
+}
+nav a {
+  color: white;
+}
+
+nav a:hover {
+    color: white;
+}

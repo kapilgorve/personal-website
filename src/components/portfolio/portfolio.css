@@ -1,0 +1,70 @@
+.chip {
+  display: inline-block;
+  padding: 0px 12px;
+  margin-right: 0.5rem;
+  height: 24px;
+  font-size: 12px;
+  line-height: 24px;
+  border-radius: 12px;
+  background-color: #f1f1f1;
+}
+.portfolio {
+  background: linear-gradient(to right, rgba(204, 43, 94, 0.8), rgba(24, 0, 80, 0.77));
+  padding-bottom: 2rem;
+}
+.portfolio h2 {
+  padding-top: 3rem;
+  font-size: 5rem;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+.portfolio h3 {
+  font-size: 1.6rem;
+  text-align: center;
+  background: linear-gradient(to right, #cc2b5e, rgba(24, 0, 80, 0.89));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.portfolio .card {
+  background: white;
+  margin-top: 4rem;
+  box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
+  border: none;
+}
+.portfolio .card-body {
+  background-color: #fcfcfc;
+}
+.portfolio .overlay {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
+.portfolio .overlay div {
+  position: absolute;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+  transition: background ease 0.3s;
+}
+.portfolio .overlay div:hover {
+  background: #000000;
+  transition: background ease 0.3s;
+}
+.portfolio img {
+  max-width: 15em;
+  margin: 2rem;
+}
+.portfolio .loading {
+  margin: auto;
+  width: 200px;
+}
+.portfolio a {
+  color: inherit;
+}
+.portfolio a:hover {
+  text-decoration: none;
+  color: inherit;
+}

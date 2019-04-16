@@ -1,0 +1,32 @@
+.contact {
+  padding-bottom: 2rem;
+}
+.contact h2 {
+  padding-top: 3rem;
+  font-size: 4rem;
+  font-weight: 300;
+  background: linear-gradient(to right, #cc2b5e, rgba(24, 0, 80, 0.89));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.contact p {
+  font-size: 1.8rem;
+  color: var(--dark);
+}
+.contact .icons {
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+}
+.contact a {
+  margin: auto 2rem;
+}
+.contact img {
+  height: 60px;
+}
+@media only screen and (max-width: 600px) {
+  .contact a {
+    margin: 2rem;
+  }
+}
