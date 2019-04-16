@@ -10,16 +10,17 @@
     "gatsby-plugin-offline": "^2.0.5",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sharp": "^2.0.5",
+    "gatsby-plugin-sitemap": "^2.0.12",
     "gatsby-remark-images": "^2.0.3",
     "gatsby-remark-prismjs": "^3.2.6",
+    "gatsby-source-filesystem": "^2.0.28",
+    "gatsby-transformer-remark": "^2.3.8",
+    "prettier": "^1.14.2",
     "prismjs": "^1.16.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0",
-    "reactstrap": "^6.4.0",
-    "gatsby-source-filesystem": "^2.0.28",
-    "gatsby-transformer-remark": "^2.3.8",
-    "prettier": "^1.14.2"
+    "reactstrap": "^6.4.0"
   },
   "keywords": [
     "gatsby"
