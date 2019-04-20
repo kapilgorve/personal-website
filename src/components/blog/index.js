@@ -25,10 +25,6 @@ const Blog = ({ posts }) => {
                 return (
                   <div className="card" key={post.id}>
                     <Link to={`${post.fields.slug}`}>
-                      <div>
-                        <div className="overlay">
-                          <div />
-                        </div>
                         <div className="card-body">
                           <h3 className="card-title" style={titleStyle}>
                             {frontmatter.title}
@@ -41,7 +37,6 @@ const Blog = ({ posts }) => {
                             )
                           })}
                         </div>
-                      </div>
                     </Link>
                   </div>
                 )

@@ -107,3 +107,8 @@ body {
     padding: 15px;
   }
 }
+
+.blog-index a {
+  text-decoration: none;
+  color: inherit;
+}
