@@ -107,7 +107,9 @@ body {
     padding: 15px;
   }
 }
-
+.article img {
+  width: 100%;
+}
 .blog-index a {
   text-decoration: none;
   color: inherit;
