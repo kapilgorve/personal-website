@@ -13,7 +13,8 @@ const Layout = ({ children }) => (
       query SiteTitleQuery {
         site {
           siteMetadata {
-            title
+            title,
+            description
           }
         }
       }
@@ -38,6 +39,22 @@ const Layout = ({ children }) => (
               name: 'google-site-verification',
               content:
                 'wQ_f9X_15oprPRnRxUYGguIh0Hx7VaPbGECLUKMxgJI',
+            },
+            {
+              name: 'twitter:site',
+              content: '@kapilgorve',
+            },
+            {
+              name: 'twitter:card',
+              content: 'summary',
+            },
+            {
+              name: 'twitter:title',
+              content: data.site.siteMetadata.title,
+            },
+            {
+              name: 'twitter:description',
+              content: data.site.siteMetadata.description,
             },
           ]}
         >
