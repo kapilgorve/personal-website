@@ -57,6 +57,22 @@ const BlogPost = ({ data }) => {
               name="description"
               content={`${post.frontmatter.description}`}
             />
+            <meta
+              name="twitter:site"
+              content={`@kapilgorve`}
+            />
+            <meta
+              name="twitter:card"
+              content={`summary`}
+            />
+            <meta
+              name="twitter:title"
+              content={`${post.frontmatter.title}`}
+            />
+            <meta
+              name="twitter:description"
+              content={`${post.frontmatter.description}`}
+            />
           </Helmet>
         }
         tags={post.frontmatter.tags}
