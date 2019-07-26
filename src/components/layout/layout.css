@@ -114,3 +114,11 @@ body {
   text-decoration: none;
   color: inherit;
 }
+
+.embed {
+text-align: center;
+}
+
+.embed img {
+  width: auto;
+}
