@@ -23,4 +23,6 @@ Referring to this github issue - https://github.com/facebook/react-native/issues
 ![Image of Yaktocat](xcode-libraries.png)
 
 
+Update- I am told that this issue will be fixed around React Native version 60.
+
 
