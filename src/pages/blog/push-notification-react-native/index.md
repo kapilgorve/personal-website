@@ -12,19 +12,44 @@ Let's start
 
 ## Create a React Native Project
 We need to React Native project to actually add push notification service. So let's create one. I'm using react-native@0.60.4 which is latest at the time of writing this article. Go to terminal and run this command.
-> react-native init pushnotification
+> react-native init pushNotification
 
-You can replace `pushnotification` with project name of your choice.
+You can replace `pushNotification` with project name of your choice.
 
 ## Create application on firebase console
 We have create an application on firebase console to use the firebase SDK. Go [here](https://console.firebase.google.com/) and create an application. 
 * Click on Add Project.
-* Add iOS and Android app and follow the steps. Make sure project name in **Register app** section matches with your react-native project.  
-// image
+* Add iOS and Android app and follow the steps. Make sure project name in **Register app** section matches with your react-native project (`com.pushnotification` in our case).  
+!['Register App'](https://raw.githubusercontent.com/iamshadmirza/personal-website/push-notification-react-native/src/pages/blog/push-notification-react-native/add-app.png)
 * Download `google-services.json` and paste it inside `/pushnotification/android/app/`. Make sure the location is correct.  
-// image
+!['Project structure'](https://raw.githubusercontent.com/iamshadmirza/personal-website/push-notification-react-native/src/pages/blog/push-notification-react-native/project-structure.jpg)
 * Add libraries as instructed and Sync Project. This will look something like this:-  
-// image
+    * Project-level build.gradle
+    ```java
+    dependencies {
+        classpath("com.android.tools.build:gradle:3.4.1")
+        classpath 'com.google.gms:google-services:4.3.0' //add this line
+    }
+    ```
+    * App-level build.gradle
+    ```java
+    dependencies {
+        implementation fileTree(dir: "libs", include: ["*.jar"])
+        implementation "com.facebook.react:react-native:+"
+        implementation 'com.google.firebase:firebase-core:17.0.1' // Add this line
+        implementation 'com.google.firebase:firebase-messaging:19.0.1' // Add this line
+        
+        if (enableHermes) {
+        def hermesPath = "../../node_modules/hermesvm/android/";
+        debugImplementation files(hermesPath + "hermes-debug.aar")
+        releaseImplementation files(hermesPath + "hermes-release.aar")
+        } else {
+        implementation jscFlavor
+        }
+    }
+    //Add to the bottom of the file
+    apply plugin: 'com.google.gms.google-services'
+    ```
 
 ## Add react-native-firebase
 Go to your project and run this command.
@@ -33,7 +58,7 @@ Go to your project and run this command.
 (Optional) Link the module if your react-native version is less than 0.60. Run this command.
 > react-native link react-native-firebase
 
-React Native takes care of the linking itself above 0.60. No need if you're following along this tutorial.
+React Native version 0.60 and above takes care of the linking itself. No need if you're following along this tutorial.
 
 ## Test notification on device
 Now we have added all the libraries required and we should be able to receive notification. 
