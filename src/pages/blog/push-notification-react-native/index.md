@@ -1,6 +1,6 @@
 # How to add Push Notification in React Native
 
-We are going to use react-native-firebase to add push notification in our react-native app and utilize firebase cloud messaging.  
+We are going to use `react-native-firebase` to add push notification in our react-native app and utilize firebase cloud messaging.  
 Steps involved:-  
 1. Create react-native project
 2. Create application on firebase console
@@ -28,7 +28,7 @@ We have create an application on firebase console to use the firebase SDK. Go [h
     ```java
     dependencies {
         classpath("com.android.tools.build:gradle:3.4.1")
-        classpath 'com.google.gms:google-services:4.3.0' //add this line
+        classpath 'com.google.gms:google-services:4.3.0' //Add this line
     }
     ```
     * App-level build.gradle
@@ -51,6 +51,10 @@ We have create an application on firebase console to use the firebase SDK. Go [h
     apply plugin: 'com.google.gms.google-services'
     ```
 
+    > Please use the latest firebase dependency available.  
+    You can add it from Android Studio also by going to  
+    File -> Project Structure -> Dependencies
+    
 ## Add react-native-firebase
 Go to your project and run this command.
 > npm i react-native-firebase --save
@@ -78,7 +82,7 @@ This part involves two steps: -
 2. Listen to notification.
 
 ### Ask for permission
-To start listening to notification, we have to ask for user's permission first. We want to ask for permission when the user opens app. So we will be adding code to `App.js`.
+To start listening to notification, we have to ask for user's permission first. We want to ask for permission when the user opens app. So we will be adding code to the root file `App.js`.
 Follow these steps:-  
 1. Import firebase module.  
 ```javascript
