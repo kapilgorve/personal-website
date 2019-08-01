@@ -6,7 +6,7 @@ const Resume = () => (
     <div className="resume" />
 
     <iframe
-      src="https://drive.google.com/file/d/1uyFaWafb2cGNW2vIR3ZnbLft5u9tICEB/preview"
+      src="https://drive.google.com/file/d/1zRF8P8AOiy27hFat_VIaaiil9dngrCXr/preview"
       type="application/pdf"
       height="768px"
       width="100%"
