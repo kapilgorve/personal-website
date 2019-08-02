@@ -1,23 +1,25 @@
 # How to add Push Notification in React Native
 
-We will use `react-native-firebase` to add push notification in our react-native app and use firebase cloud messaging.  
+We will use `react-native-firebase` to add push notification in our react-native app and hopefully save your time implementing it.
 ### Steps involved:-  
 1. Create react-native project
 2. Create an application on firebase console
 3. Add react-native-firebase 
-4. Add Firebase Messaging Library
+4. Add Firebase Messaging and Notification Module
 5. Test Notification on Device
-6. Listen to notification  
+6. Listening Notification 
 
-Let's start.
+Let's get started.
 
-## Create a React Native Project
-We need a React Native project to add a push notification service. So let's create one. I'm using react-native@0.60.4 which is the latest at the time of writing this article. Go to the terminal and run this command.
-> react-native init pushNotification
+## Step 1. Create a React Native Project
+Let's create a React Native Project to start implementing Push Notification service. I'm using react-native@0.60.4 which is the latest at the time of writing this article. Go to the terminal and run this command.
+```shell
+react-native init pushNotification
+```
 
 You can replace `pushNotification` with the project name of your choice.
 
-## Create an application on firebase console
+## Step 2. Create an application on firebase console
 Let's create an application on the firebase console to use the Firebase SDK. Go [here](https://console.firebase.google.com/) and create an application. 
 * Click on Add Project.
 * Add iOS and Android app and follow the steps. Make sure the project name in **Register app** section matches with your react-native project (`com.pushnotification` in our case).  
@@ -51,39 +53,43 @@ Let's create an application on the firebase console to use the Firebase SDK. Go 
     //Add to the bottom of the file
     apply plugin: 'com.google.gms.google-services'
     ```
-    >Please use the latest firebase dependency available. You can add it from Android Studio also by going to:  
+>Please use the latest firebase dependency available. You can also add it from Android Studio by going to:  
     File -> Project Structure -> Dependencies
-## Add react-native-firebase
-Go to your project and run this command.
-> npm i react-native-firebase --save
+## Step 3. Add react-native-firebase
+Go to your project root directory and run this command.
+```shell
+npm install react-native-firebase --save
+```
 
-(Optional) Link the module if your react-native version is less than 0.60. Run this command.
-> react-native link react-native-firebase
+(Optional) Link the module if your react-native version is less than 0.60.
+```shell
+react-native link react-native-firebase
+```
 
-React Native version (>0.60) supports [autolinking](https://facebook.github.io/react-native/blog/2019/07/03/version-60#native-modules-are-now-autolinked) but sometimes, it might not work. Follow the Manual Linking guide if you're having any issue with linking `react-native-firebase`.
+>React Native version (>0.60) supports [autolinking](https://facebook.github.io/react-native/blog/2019/07/03/version-60#native-modules-are-now-autolinked).  
 
-### Manual Linking for React Native(<0.60)
+Follow the Manual Linking guide if you're having issues with linking `react-native-firebase` or you're using an earlier version of React Native.
+
+## Manual Linking for React Native(<0.60)
 Check out the official [docs](https://rnfirebase.io/docs/v5.x.x/installation/android) for updated method.
 ### Android
 * Add `react-native-firebase` to App-level `build.gradle`
 ```java
 dependencies {
+    // ...
     implementation project(':react-native-firebase') // Add this line
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation "com.facebook.react:react-native:+"
-    implementation 'com.google.firebase:firebase-core:17.0.1'
 }
 ```
 * Edit `settings.gradle`
 ```java
+//Add these lines
 include ':react-native-firebase'
 project(':react-native-firebase').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-firebase/android')
 ```
 * Edit `MainApplication.java`
 ```java
     import...
-    import io.invertase.firebase.RNFirebasePackage; // import this
+    import io.invertase.firebase.RNFirebasePackage; // import core package
 
     @Override
     protected List<ReactPackage> getPackages() {
@@ -93,21 +99,24 @@ project(':react-native-firebase').projectDir = new File(rootProject.projectDir, 
       );
     }
 ```
-* Sync Project
+* Sync Project and we are good to go.
 
-## Add Firebase Messaging Library
-
+## Step 4. Add Firebase Messaging and Notification Module
+We have to include other modules as the `RNFirebasePackage` we imported earlier provides the core features only.
 * Add the dependency to `android/app/build.gradle` file:
 ```java
 dependencies {
   // ...
   implementation 'com.google.firebase:firebase-messaging:19.0.1'
+  
 }
 ```
 * Edit `MainApplication.java`:
 ```java
 import...
-import io.invertase.firebase.messaging.RNFirebaseMessagingPackage; // import this
+// import these two packages
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage
 
 @Override
 protected List<ReactPackage> getPackages() {
@@ -115,35 +124,37 @@ protected List<ReactPackage> getPackages() {
         new MainReactPackage(),
         new RNFirebasePackage(),
         new RNFirebaseMessagingPackage() // Add this line
+        new RNFirebaseNotificationsPackage() // Add this line
     );
 }
 ```
-* Sync Project
+* Sync Project and we are done.
 
-> See [official docs](https://rnfirebase.io/docs/v5.x.x/links/android#Configure-Android-Project) for updated method.
+> Check out [official docs](https://rnfirebase.io/docs/v5.x.x/links/android#Configure-Android-Project) for updated method.
 
-## Test notification on the device
-Now we have added all the libraries required and we should be able to receive a notification. 
-> Make sure your app is in background.
+## Step 5. Test notification on the device
+Now that we have added all the required libraries hence we should be able to receive a notification. Let's test it out but *first make sure your app is in background.*
 1. Go to firebase console
 2. Click on **Cloud Messaging** on the left panel.
 3. Click on **Send your first message**.
 4. Enter **Notification text**-> Click **Next**->Choose **Target**->Select app in **User Segment**.
 5. Publish notification and check device.
 
-## Listen to notification
-This part involves two steps: -
-1. Ask for permission.
-2. Listen to the notification.
+I hope you're able to get a *test notification* on your device. Let's move on to next section.
 
-### Ask for permission
-To start listening to the notification, we have to ask for the user's permission first. We want to ask for permission when the user opens the app. So we will be adding code to the root file `App.js`.
-Follow these steps:-  
-1. Import firebase module.  
+## Step 6. Listening Notifications
+This part involves three steps: -
+1. Check Permissions
+1. Request Permissions
+2. Listen for Notifications
+
+## Check Permissions
+We need to ensure that user has granted required permissions so that we can receive Notifications:
+* Import firebase module.  
 ```javascript
 import firebase from 'react-native-firebase';
 ```
-2. Check for permission in `componentDidMount()`. If permission hasn't been granted then ask for permission in `askPermission()` otherwise fetch the `token`.
+* Check for permission in `componentDidMount()`. If permission hasn't been granted then ask for permission in `askPermission()` otherwise fetch the `token`.
 ```javascript
 async componentDidMount(){
     const granted = await firebase.messaging().hasPermission();
@@ -154,7 +165,10 @@ async componentDidMount(){
     }
 }
 ```
-3. Ask permission if not already granted. Fetch token once the permission is granted
+
+## Request Permissions
+Request the permissions if not already granted. This step is very important in case for iOS Plateform.
+* Ask permission if not already granted. Fetch token once the permission is granted
 ```javascript
     async askPermission(){
         try{
@@ -166,7 +180,7 @@ async componentDidMount(){
         }
     }
 ```
-4. Check if the token is already saved. If not then `getToken` from `firebase` module and save it in `AsyncStorage`.
+* Check if the token is already saved. If not then `getToken` from `firebase` module and save it in `AsyncStorage`.
 ```javascript
     async fetchToken(){
         let fcmToken = await AsyncStorage.getItem('fcmToken');
@@ -178,5 +192,52 @@ async componentDidMount(){
         }
     }
 ```
-### Listen to notification
-Now when the user has the required permission, we can finally proceed to listening notifications.
+## Listen for Notifications
+Firebase Notifications can be of three different types:
+* notification-only messages from FCM
+* notification + data messages from FCM
+* local notifications
+
+A notification will trigger one of these listeners depending on the state of your application:
+
+* onNotificationDisplayed - Triggered when a particular notification has been displayed.
+* onNotification - Triggered when a particular notification has been received
+* onNotificationOpened - Triggered when your app is in background and opened when a notification is clicked.
+* getInitialNotification - Triggered when your app is closed and opened when a notification is clicked.
+```javascript
+componentDidMount() {
+    this.notificationDisplayedListener = firebase.notifications().onNotificationDisplayed((notification) => {
+        // Process your notification as required
+    });
+
+    this.notificationListener = firebase.notifications().onNotification((notification) => {
+        // Process your notification as required
+    });
+
+    // App (in background) was opened by a notification
+    this.notificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen) => {
+        // Get the action triggered by the notification being opened
+        const action = notificationOpen.action;
+        // Get information about the notification that was opened
+        const notification = notificationOpen.notification;
+    });
+
+    // App was opened by a notification
+    const notificationOpen = await firebase.notifications().getInitialNotification();
+    if (notificationOpen) {
+        // Get the action triggered by the notification being opened
+        const action = notificationOpen.action;
+        // Get information about the notification that was opened
+        const notification = notificationOpen.notification;
+    }
+}
+
+componentWillUnmount() {
+    this.notificationDisplayedListener();
+    this.notificationListener();
+    this.notificationOpenedListener();
+}
+```
+> *Note: On Android, unfortunately there is no way to access the title and body of an opened remote notification. You can use the data part of the remote notification to supply this information if it's required.*
+
+I hope you're able to receive the notification successfully by now.
