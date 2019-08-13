@@ -241,3 +241,70 @@ componentWillUnmount() {
 > *Note: On Android, unfortunately there is no way to access the title and body of an opened remote notification. You can use the data part of the remote notification to supply this information if it's required.*
 
 I hope you're able to receive the notification successfully by now.
+
+# How to trigger a Push Notification from server
+We will use `fcm-node` node module to make our task easier.  
+You will need two things to trigger a notification.
+1. Server Key from Firebase Console.
+2. Registration token from device.
+## Get Server Key from Firebase Console
+Follow these simple steps:
+1. Go to [Firebase Console](https://console.firebase.google.com).
+2. Go to **Project Overview** and open **Project Settings**.  
+!['ProjectOverview'](https://raw.githubusercontent.com/kapilgorve/personal-website/push-notification-server-side/src/pages/blog/push-notification-react-native/proj_overview.png)
+3. Go to **Cloud Messaging** and copy the *Server Key* from *Project credentials*
+## Get Registration token from device
+>Check out `fetchToken()` function we wrote earlier
+
+Acquire token from AsyncStorage.
+```javascript
+let fcmToken = await AsyncStorage.getItem('fcmToken');
+```
+Now we are ready to trigger the notification from server. 
+
+## Sending Push Notification
+Run this command in your root server project and install the required module.
+```shell
+$ npm install fcm-node
+```
+Sending a Push Notification require 3 simple steps: 
+## Step 1. Import module and setup server key.
+```javascript
+    var FCM = require('fcm-node');
+    var serverKey = 'SERVER_KEY'; //put your key here
+    var fcm = new FCM(serverKey); //pass it to FCM constructor
+```
+## Step 2. Define message body to send
+```javascript
+var message = { //based on message type (single recipient, multicast, topic, et cetera)
+        to: 'registration_token', // saved in fcmToken variable
+        collapse_key: 'your_collapse_key', //if you want the notification to be collapsible
+        
+        notification: {
+            title: 'Title of your push notification', 
+            body: 'Body of your push notification' 
+        },
+        
+        data: {  //you can send only notification or only data(or include both)
+            my_key: 'my value',
+            my_another_key: 'my another value'
+        }
+    };
+```
+**If you want the notification to be collapsible** means that the notification may be 'overwritten' in a sense, by another similar message with the same collapse_key value.  
+Let me explain `collapse_key` in more details.
+>If there is already a message with the same collapse key (and registration token) stored and waiting for delivery, the old message will be discarded and the new message will take its place (that is, the old message will be collapsed by the new one).  
+However, if the collapse key is not set, both the new and old messages are stored for future delivery.
+
+Go to this link for further reading about the different payload properties of message body: https://firebase.google.com/docs/cloud-messaging/http-server-ref#notification-payload-support
+## Step 3. Send the Notification
+```javascript
+fcm.send(message, function(err, response){
+    if (err) {
+        console.log("Something has gone wrong!");
+    } else {
+        console.log("Successfully sent with response: ", response);
+    }
+});
+```
+That's it. We have successfully completed setting our server to trigger Push Notification.
