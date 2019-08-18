@@ -28,9 +28,9 @@ You can replace `pushNotification` with the project name of your choice.
 Let's create an application on the firebase console to use the Firebase SDK. Go [here](https://console.firebase.google.com/) and create an application.
 * Click on Add Project.
 * Add iOS and Android app and follow the steps. Make sure the project name in **Register app** section matches with your react-native project (`com.pushnotification` in our case).
-!['Register App'](https://raw.githubusercontent.com/iamshadmirza/personal-website/push-notification-react-native/src/pages/blog/push-notification-react-native/add-app.png)
+!['Register App'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/push-notification-react-native/add-app.png)
 * Download `google-services.json` and paste it inside `/pushnotification/android/app/`. Make sure the location is correct.
-!['Project structure'](https://raw.githubusercontent.com/iamshadmirza/personal-website/push-notification-react-native/src/pages/blog/push-notification-react-native/project-structure.jpg)
+!['Project structure'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/push-notification-react-native/project-structure.jpg)
 * Add libraries as instructed and Sync Project. This will look something like this:-
     * Project-level build.gradle
     ```java
@@ -256,7 +256,7 @@ You will need two things to trigger a notification.
 Follow these simple steps:
 1. Go to [Firebase Console](https://console.firebase.google.com).
 2. Go to **Project Overview** and open **Project Settings**.
-!['ProjectOverview'](https://raw.githubusercontent.com/kapilgorve/personal-website/push-notification-server-side/src/pages/blog/push-notification-react-native/proj_overview.png)
+!['ProjectOverview'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/push-notification-react-native/proj_overview.png)
 3. Go to **Cloud Messaging** and copy the *Server Key* from *Project credentials*
 ## Get Registration token from device
 >Check out `fetchToken()` function we wrote earlier
