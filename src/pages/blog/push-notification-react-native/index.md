@@ -1,13 +1,18 @@
-# How to add Push Notification in React Native
-
+---
+title: 'How to add Push Notification in React Native for Android'
+tags: ['ReactJs', 'ReactNative', 'Javascript', 'Android']
+type: 'blog'
+date: '2019-08-18'
+description: 'React Native: How to add Push Notification in Android '
+---
 We will use `react-native-firebase` to add push notification in our react-native app and hopefully save your time implementing it.
-### Steps involved:-  
+### Steps involved:-
 1. Create react-native project
 2. Create an application on firebase console
-3. Add react-native-firebase 
+3. Add react-native-firebase
 4. Add Firebase Messaging and Notification Module
 5. Test Notification on Device
-6. Listening Notification 
+6. Listening Notification
 
 Let's get started.
 
@@ -20,14 +25,14 @@ react-native init pushNotification
 You can replace `pushNotification` with the project name of your choice.
 
 ## Step 2. Create an application on firebase console
-Let's create an application on the firebase console to use the Firebase SDK. Go [here](https://console.firebase.google.com/) and create an application. 
+Let's create an application on the firebase console to use the Firebase SDK. Go [here](https://console.firebase.google.com/) and create an application.
 * Click on Add Project.
-* Add iOS and Android app and follow the steps. Make sure the project name in **Register app** section matches with your react-native project (`com.pushnotification` in our case).  
+* Add iOS and Android app and follow the steps. Make sure the project name in **Register app** section matches with your react-native project (`com.pushnotification` in our case).
 !['Register App'](https://raw.githubusercontent.com/iamshadmirza/personal-website/push-notification-react-native/src/pages/blog/push-notification-react-native/add-app.png)
-* Download `google-services.json` and paste it inside `/pushnotification/android/app/`. Make sure the location is correct.  
+* Download `google-services.json` and paste it inside `/pushnotification/android/app/`. Make sure the location is correct.
 !['Project structure'](https://raw.githubusercontent.com/iamshadmirza/personal-website/push-notification-react-native/src/pages/blog/push-notification-react-native/project-structure.jpg)
-* Add libraries as instructed and Sync Project. This will look something like this:-  
-    * Project-level build.gradle  
+* Add libraries as instructed and Sync Project. This will look something like this:-
+    * Project-level build.gradle
     ```java
     dependencies {
         classpath("com.android.tools.build:gradle:3.4.1")
@@ -41,7 +46,7 @@ Let's create an application on the firebase console to use the Firebase SDK. Go 
         implementation "com.facebook.react:react-native:+"
         implementation 'com.google.firebase:firebase-core:17.0.1' // Add this line
         implementation 'com.google.firebase:firebase-messaging:19.0.1' // Add this line
-        
+
         if (enableHermes) {
         def hermesPath = "../../node_modules/hermesvm/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -53,7 +58,7 @@ Let's create an application on the firebase console to use the Firebase SDK. Go 
     //Add to the bottom of the file
     apply plugin: 'com.google.gms.google-services'
     ```
->Please use the latest firebase dependency available. You can also add it from Android Studio by going to:  
+>Please use the latest firebase dependency available. You can also add it from Android Studio by going to:
     File -> Project Structure -> Dependencies
 ## Step 3. Add react-native-firebase
 Go to your project root directory and run this command.
@@ -66,7 +71,7 @@ npm install react-native-firebase --save
 react-native link react-native-firebase
 ```
 
->React Native version (>0.60) supports [autolinking](https://facebook.github.io/react-native/blog/2019/07/03/version-60#native-modules-are-now-autolinked).  
+>React Native version (>0.60) supports [autolinking](https://facebook.github.io/react-native/blog/2019/07/03/version-60#native-modules-are-now-autolinked).
 
 Follow the Manual Linking guide if you're having issues with linking `react-native-firebase` or you're using an earlier version of React Native.
 
@@ -108,7 +113,7 @@ We have to include other modules as the `RNFirebasePackage` we imported earlier 
 dependencies {
   // ...
   implementation 'com.google.firebase:firebase-messaging:19.0.1'
-  
+
 }
 ```
 * Edit `MainApplication.java`:
@@ -150,7 +155,7 @@ This part involves three steps: -
 
 ## Check Permissions
 We need to ensure that user has granted required permissions so that we can receive Notifications:
-* Import firebase module.  
+* Import firebase module.
 ```javascript
 import firebase from 'react-native-firebase';
 ```
@@ -243,14 +248,14 @@ componentWillUnmount() {
 I hope you're able to receive the notification successfully by now.
 
 # How to trigger a Push Notification from server
-We will use `fcm-node` node module to make our task easier.  
+We will use `fcm-node` node module to make our task easier.
 You will need two things to trigger a notification.
 1. Server Key from Firebase Console.
 2. Registration token from device.
 ## Get Server Key from Firebase Console
 Follow these simple steps:
 1. Go to [Firebase Console](https://console.firebase.google.com).
-2. Go to **Project Overview** and open **Project Settings**.  
+2. Go to **Project Overview** and open **Project Settings**.
 !['ProjectOverview'](https://raw.githubusercontent.com/kapilgorve/personal-website/push-notification-server-side/src/pages/blog/push-notification-react-native/proj_overview.png)
 3. Go to **Cloud Messaging** and copy the *Server Key* from *Project credentials*
 ## Get Registration token from device
@@ -260,14 +265,14 @@ Acquire token from AsyncStorage.
 ```javascript
 let fcmToken = await AsyncStorage.getItem('fcmToken');
 ```
-Now we are ready to trigger the notification from server. 
+Now we are ready to trigger the notification from server.
 
 ## Sending Push Notification
 Run this command in your root server project and install the required module.
 ```shell
 $ npm install fcm-node
 ```
-Sending a Push Notification require 3 simple steps: 
+Sending a Push Notification require 3 simple steps:
 ## Step 1. Import module and setup server key.
 ```javascript
     var FCM = require('fcm-node');
@@ -279,21 +284,21 @@ Sending a Push Notification require 3 simple steps:
 var message = { //based on message type (single recipient, multicast, topic, et cetera)
         to: 'registration_token', // saved in fcmToken variable
         collapse_key: 'your_collapse_key', //if you want the notification to be collapsible
-        
+
         notification: {
-            title: 'Title of your push notification', 
-            body: 'Body of your push notification' 
+            title: 'Title of your push notification',
+            body: 'Body of your push notification'
         },
-        
+
         data: {  //you can send only notification or only data(or include both)
             my_key: 'my value',
             my_another_key: 'my another value'
         }
     };
 ```
-**If you want the notification to be collapsible** means that the notification may be 'overwritten' in a sense, by another similar message with the same collapse_key value.  
+**If you want the notification to be collapsible** means that the notification may be 'overwritten' in a sense, by another similar message with the same collapse_key value.
 Let me explain `collapse_key` in more details.
->If there is already a message with the same collapse key (and registration token) stored and waiting for delivery, the old message will be discarded and the new message will take its place (that is, the old message will be collapsed by the new one).  
+>If there is already a message with the same collapse key (and registration token) stored and waiting for delivery, the old message will be discarded and the new message will take its place (that is, the old message will be collapsed by the new one).
 However, if the collapse key is not set, both the new and old messages are stored for future delivery.
 
 Go to this link for further reading about the different payload properties of message body: https://firebase.google.com/docs/cloud-messaging/http-server-ref#notification-payload-support
