@@ -62,5 +62,11 @@ module.exports = {
         trackingId: "UA-145836960-1",
       },
     },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `kapilgorve`
+      }
+    },
   ],
 }
