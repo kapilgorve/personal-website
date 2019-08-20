@@ -51,7 +51,8 @@ const titleStyle = {
 
 export const query = graphql`
   query BlogQuery {
-    allMarkdownRemark(filter: { frontmatter: { type: { eq: "blog" } } }) {
+    allMarkdownRemark(filter: { frontmatter: { type: { eq: "blog" } } },
+    sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {
         node {
