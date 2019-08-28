@@ -1,5 +1,6 @@
 # Navigation in React Native
-!['cover'](./cover.png)
+!['cover'](./cover.png)  
+
 When you're building a mobile app, it will probably consist of multiple screens which the user will switch back and forth. Allowing the user to transition between different screens is a job of a navigator and this guide will cover it in detail. We will first understand how the navigation works followed by setting up navigation in your React Native application. Let's start.
 
 ## Concept
