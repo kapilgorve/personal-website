@@ -5,7 +5,6 @@ import Layout from '../../components/layout'
 
 const BlogIndex = ({ data }) => {
   const { edges } = data.allMarkdownRemark
-
   return (
     <Layout>
       <div className="container blog-index">

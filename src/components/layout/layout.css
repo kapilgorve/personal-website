@@ -122,3 +122,7 @@ text-align: center;
 .embed img {
   width: auto;
 }
+
+.navbar {
+  justify-content: flex-end;
+}
