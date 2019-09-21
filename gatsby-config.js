@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Kapil Gorve Freelance Web Developer,Pune,India.',
+    title: 'Kapil Gorve Freelance Web Developer',
     author: 'Kapil Gorve',
     description: 'Portfolio and blog by Kapil Gorve.',
     siteUrl: 'https://www.jskap.com',

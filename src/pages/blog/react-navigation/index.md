@@ -1,9 +1,9 @@
 ---
 title: 'Navigation in React Native using React Navigation'
-tags: ['ReactNative','React Navigation',ReactJs','Javascript']
+tags: ['ReactNative','React Navigation', 'ReactJs','Javascript']
 type: 'blog'
 date: '2019-09-21'
-description: 'How to add navigation in React Native app '
+description: 'How to add navigation in React Native app'
 ---
 !['cover'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/react-navigation-cover.png)
 
