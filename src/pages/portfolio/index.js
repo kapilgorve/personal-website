@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet';
 import Layout from '../../components/layout'
 import PortFolio from '../../components/portfolio';
 
@@ -7,6 +8,9 @@ const PortfolioPage = ({ data }) => {
     const { edges } = data.allMarkdownRemark;
     return (
       <Layout>
+         <Helmet>
+         <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <PortFolio posts={edges} />
       </Layout>
     )

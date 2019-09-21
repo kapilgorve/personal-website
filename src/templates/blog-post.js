@@ -6,6 +6,7 @@ import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 
 import Layout from '../components/layout'
 import Content, { HTMLContent } from '../components/content'
+import { extractCoverUrl } from '../utils/cover'
 
 export const BlogPostTemplate = ({
   content,
@@ -52,6 +53,9 @@ BlogPostTemplate.propTypes = {
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
+  const coverUrl = extractCoverUrl(post.html);
+  const keywords = post.frontmatter.tags.toString();
+
   return (
     <Layout>
       <BlogPostTemplate
@@ -66,13 +70,39 @@ const BlogPost = ({ data }) => {
               name="description"
               content={`${post.frontmatter.description}`}
             />
+             <meta
+              name="keywords"
+              content={`${keywords}`}
+            />
+            {/* OpenGraph/Facebook tags */}
             <meta
-              name="twitter:site"
-              content={`@kapilgorve`}
+              name="og:title"
+              content={`${post.frontmatter.title}`}
             />
             <meta
-              name="twitter:card"
-              content={`summary`}
+              name="og:description"
+              content={`${post.frontmatter.description}`}
+            />
+            <meta
+              name="og:image"
+              content={`${coverUrl}`}
+            />
+            <meta
+              name="og:url"
+              content={`${data.site.siteMetadata.siteUrl}${post.fields.slug}`}
+            />
+            <meta
+              name="og:site_name"
+              content={`${data.site.siteMetadata.title}`}
+            />
+            {/* Twitter tags */}
+            <meta
+              name="twitter:site"
+              content={`${data.site.siteMetadata.social.twitter}`}
+            />
+             <meta
+              name="twitter:creator"
+              content={`${data.site.siteMetadata.social.twitter}`}
             />
             <meta
               name="twitter:title"
@@ -81,6 +111,14 @@ const BlogPost = ({ data }) => {
             <meta
               name="twitter:description"
               content={`${post.frontmatter.description}`}
+            />
+            <meta
+              name="twitter:card"
+              content={`${coverUrl}`}
+            />
+            <meta
+              name="twitter:image"
+              content={`${coverUrl}`}
             />
           </Helmet>
         }
@@ -102,6 +140,15 @@ export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+        social {
+          twitter
+        }
+      }
+    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       id
@@ -110,6 +157,9 @@ export const pageQuery = graphql`
         title
         tags,
         description
+      }
+      fields {
+        slug
       }
     }
   }
