@@ -1,10 +1,16 @@
-# Navigation in React Native
-!['cover'](./cover.png)  
+---
+title: 'Navigation in React Native using React Navigation'
+tags: ['ReactNative','React Navigation',ReactJs','Javascript']
+type: 'blog'
+date: '2019-09-21'
+description: 'How to add navigation in React Native app '
+---
+!['cover'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/react-navigation-cover.png)
 
 When you're building a mobile app, it will probably consist of multiple screens which the user will switch back and forth. Allowing the user to transition between different screens is a job of a navigator and this guide will cover it in detail. We will first understand how the navigation works followed by setting up navigation in your React Native application. Let's start.
 
 ## Concept
-Navigation in apps works like a `Stack`.Consider a *Stack* which provides you the functionality to push or pop screens into it. This is exactly what's happening.  
+Navigation in apps works like a `Stack`.Consider a *Stack* which provides you the functionality to push or pop screens into it. This is exactly what's happening.
 When you navigate to a new screen, you actually `push` that screen into the *Stack*. It means that whenever you go to a new screen, it comes up on top. The *Stack* preserve the order in which you visited the screens and provides a smooth transition.
 When you're going back, you're actually `popping out` the screen from the top of the *Stack*. You can visualize this with the example on a stack of books below:
 
@@ -39,7 +45,7 @@ npm install react-native-gesture-handler react-native-reanimated
 ```
 ### Step 3. Link libraries
 Next, if you are not using the Expo managed workflow then you need to link these libraries if you haven't already. The steps depend on your React Native version:
-* React Native 0.60 and higher  
+* React Native 0.60 and higher
 On newer versions of React Native, linking is automatic.
 On iOS, to complete the linking, make sure you have Cocoapods installed. Then run:
 ```shell
@@ -49,8 +55,8 @@ cd ..
 ```
 On Android, it shouldn't need any more steps. But if you get errors regarding Android Support library during building the app, you need to install and configure `jetifier`.
 
-* React Native 0.59 and lower  
-If you're on an older React Native version, you need to manually link the dependencies. To do that, run:  
+* React Native 0.59 and lower
+If you're on an older React Native version, you need to manually link the dependencies. To do that, run:
 ```shell
 react-native link react-native-reanimated
 react-native link react-native-gesture-handler
@@ -131,7 +137,7 @@ class LoginScreen extends React.Component {
 //calling navigation.navigate on props with screen name that we set earlier
 ```
 
-* Going back to a screen: The header provided by stack navigator will automatically include a back button when it is possible to go back from the active screen(when there is more than one screen).  
+* Going back to a screen: The header provided by stack navigator will automatically include a back button when it is possible to go back from the active screen(when there is more than one screen).
 Sometimes you'll want to be able to programmatically trigger this behavior, and for that, you can use `this.props.navigation.goBack()`;.
 ```javascript
 class HomeScreen extends React.Component {
@@ -165,10 +171,10 @@ We will go through each of them quickly and see an example.
 The Stack Navigator allows arranging the screen like *Stack* as we have already seen above. You can add or remove screens just as you push or pop inside a Stack.
 
 ### 2. createSwitchNavigator
-SwitchNavigator shoes only one screen at a time and don't preserve any stack. It resets the screen when you navigate to a new screen hence there is no functionality of going back. This behavior can be very helpful when making an authentication flow. The example we wrote earlier can be updated as: 
+SwitchNavigator shoes only one screen at a time and don't preserve any stack. It resets the screen when you navigate to a new screen hence there is no functionality of going back. This behavior can be very helpful when making an authentication flow. The example we wrote earlier can be updated as:
 
 ```javascript
-//creating SwitchNavigator in Auth flow ensures that the user can't go back after logging in. 
+//creating SwitchNavigator in Auth flow ensures that the user can't go back after logging in.
 const AuthStackNavigator = createSwitchNavigator({
   Login: {screen: LoginScreen},
   Home: {screen: HomeScreen},
@@ -180,7 +186,7 @@ export default Router;
 ```
 
 ### 3. createBottomTabNavigator
-You may have seen many apps with tab-based navigation. The tabs can be at the bottom or top of the screen that lets you switch between different screens.  
+You may have seen many apps with tab-based navigation. The tabs can be at the bottom or top of the screen that lets you switch between different screens.
 Bottom Tab Navigator is a simple tab bar on the bottom of the screen. Usage:
 ```javascript
 import React from 'react';
@@ -220,7 +226,7 @@ A material-design themed tab bar on the top of the screen that lets you switch b
 createMaterialTopTabNavigator(RouteConfigs, TabNavigatorConfig);
 ```
 ### 5. createdDrawerNavigator
-The Drawer Navigator allows you to present a navigation menu to your users. You can swipe right or left to open or close the drawer and switch between different screens. It provides a default Header which is common to all the screens inside Drawer Navigator. Go to this [link](https://reactnavigation.org/docs/en/drawer-based-navigation.html) to read more. Example:  
+The Drawer Navigator allows you to present a navigation menu to your users. You can swipe right or left to open or close the drawer and switch between different screens. It provides a default Header which is common to all the screens inside Drawer Navigator. Go to this [link](https://reactnavigation.org/docs/en/drawer-based-navigation.html) to read more. Example:
 
 ```javascript
 class HomeScreen extends React.Component {
@@ -265,5 +271,5 @@ const DrawerNavigator = createDrawerNavigator(
 
 export default createAppContainer(DrawerNavigator);
 ```
-So we have covered all the basics of navigation in React Native. You can go through the [official website](https://reactnavigation.org/docs/en/api-reference.html) to know all the route configuration properties available.  
+So we have covered all the basics of navigation in React Native. You can go through the [official website](https://reactnavigation.org/docs/en/api-reference.html) to know all the route configuration properties available.
 I hope you had fun learning React Native Navigations.
