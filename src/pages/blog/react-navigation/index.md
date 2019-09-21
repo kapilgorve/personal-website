@@ -10,7 +10,7 @@ description: 'How to add navigation in React Native app '
 When you're building a mobile app, it will probably consist of multiple screens which the user will switch back and forth. Allowing the user to transition between different screens is a job of a navigator and this guide will cover it in detail. We will first understand how the navigation works followed by setting up navigation in your React Native application. Let's start.
 
 ## Concept
-Navigation in apps works like a `Stack`.Consider a *Stack* which provides you the functionality to push or pop screens into it. This is exactly what's happening.
+Navigation in apps works like a `Stack`.Consider a *Stack* which provides you with the functionality to push or pop screens into it. This is exactly what's happening.
 When you navigate to a new screen, you actually `push` that screen into the *Stack*. It means that whenever you go to a new screen, it comes up on top. The *Stack* preserve the order in which you visited the screens and provides a smooth transition.
 When you're going back, you're actually `popping out` the screen from the top of the *Stack*. You can visualize this with the example on a stack of books below:
 
@@ -30,7 +30,7 @@ or with npm
  npm install react-navigation
 ```
 
-### Step 2. Install react native-gesture-handler and react-nativere-animated.
+### Step 2. Install react native-gesture-handler and react-native-reanimated.
 If you're using Expo, to ensure that you get the compatible versions of the libraries you should run:
 ```shell
 expo install react-native-gesture-handler react-native-reanimated
@@ -138,7 +138,7 @@ class LoginScreen extends React.Component {
 ```
 
 * Going back to a screen: The header provided by stack navigator will automatically include a back button when it is possible to go back from the active screen(when there is more than one screen).
-Sometimes you'll want to be able to programmatically trigger this behavior, and for that, you can use `this.props.navigation.goBack()`;.
+Sometimes you'll want to be able to programmatically trigger this behaviour, and for that, you can use `this.props.navigation.goBack()`;.
 ```javascript
 class HomeScreen extends React.Component {
 
@@ -171,7 +171,7 @@ We will go through each of them quickly and see an example.
 The Stack Navigator allows arranging the screen like *Stack* as we have already seen above. You can add or remove screens just as you push or pop inside a Stack.
 
 ### 2. createSwitchNavigator
-SwitchNavigator shoes only one screen at a time and don't preserve any stack. It resets the screen when you navigate to a new screen hence there is no functionality of going back. This behavior can be very helpful when making an authentication flow. The example we wrote earlier can be updated as:
+SwitchNavigator shoes only one screen at a time and doesn't preserve any stack. It resets the screen when you navigate to a new screen hence there is no functionality of going back. This behaviour can be very helpful when making an authentication flow. The example we wrote earlier can be updated as:
 
 ```javascript
 //creating SwitchNavigator in Auth flow ensures that the user can't go back after logging in.
