@@ -95,6 +95,10 @@ const BlogPost = ({ data }) => {
               name="og:site_name"
               content={`${data.site.siteMetadata.title}`}
             />
+             <meta
+              name="og:type"
+              content={`article`}
+            />
             {/* Twitter tags */}
             <meta
               name="twitter:site"
@@ -114,7 +118,7 @@ const BlogPost = ({ data }) => {
             />
             <meta
               name="twitter:card"
-              content={`${coverUrl}`}
+              content={`summary_large_image`}
             />
             <meta
               name="twitter:image"
