@@ -4,9 +4,12 @@ module.exports = {
     author: 'Kapil Gorve',
     description: 'Portfolio and blog by Kapil Gorve.',
     siteUrl: 'https://www.jskap.com',
+    coverUrl: 'https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/Kapil+Gorve+www.jskap.com-site-cover.jpg',
+    coverUrlHigh: 'https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/Kapil+Gorve+www.jskap.com-site-cover+high.jpg',
     social: {
       twitter: '@kapilgorve',
     },
+    googleSiteVerification: 'wQ_f9X_15oprPRnRxUYGguIh0Hx7VaPbGECLUKMxgJI',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

@@ -13,8 +13,16 @@ const Layout = ({ children }) => (
       query SiteTitleQuery {
         site {
           siteMetadata {
-            title,
+            title
+            author
             description
+            siteUrl
+            coverUrl
+            coverUrlHigh
+            googleSiteVerification
+            social {
+              twitter
+            }
           }
         }
       }
@@ -26,35 +34,63 @@ const Layout = ({ children }) => (
           meta={[
             {
               name: 'description',
-              content:
-                'Pune based freelancer working on ReactJs, Angular,NodeJs.',
+              content: data.site.siteMetadata.description,
             },
-            { name: 'author', content: 'Kapil Gorve' },
+            { name: 'author', content: data.site.siteMetadata.author},
             {
               name: 'keywords',
               content:
-                'ReactJs Freelancer, Frontend Freelancer, Angular Freelancer, Freelance WebDeveloper',
+                'ReactJs Freelancer, Frontend Freelancer, Freelance WebDeveloper',
             },
             {
               name: 'google-site-verification',
-              content:
-                'wQ_f9X_15oprPRnRxUYGguIh0Hx7VaPbGECLUKMxgJI',
+              content: data.site.siteMetadata.googleSiteVerification,
             },
-            {
-              name: 'twitter:site',
-              content: '@kapilgorve',
-            },
-            {
-              name: 'twitter:card',
-              content: 'summary',
-            },
-            {
-              name: 'twitter:title',
-              content: data.site.siteMetadata.title,
-            },
+          // OpenGraph/Facebook tags
+          {
+            name: 'og:title',
+            content: data.site.siteMetadata.title,
+          },
+          {
+            name: 'og:descriptiom',
+            content: data.site.siteMetadata.description,
+          },
+          {
+            name: 'og:image',
+            content: data.site.siteMetadata.coverUrl,
+          },
+          {
+            name: 'og:url',
+            content: data.site.siteMetadata.siteUrl,
+          },
+          {
+            name: 'og:site_name',
+            content: data.site.siteMetadata.title,
+          },
+          // Twitter meta tags
+          {
+            name: 'twitter:title',
+            content: data.site.siteMetadata.title,
+          },
             {
               name: 'twitter:description',
               content: data.site.siteMetadata.description,
+            },
+            {
+              name: 'twitter:site',
+              content: data.site.siteMetadata.social.twitter,
+            },
+            {
+              name: 'twitter:creator',
+              content: data.site.siteMetadata.social.twitter,
+            },
+            {
+              name: 'twitter:image',
+              content: data.site.siteMetadata.coverUrl,
+            },
+            {
+              name: 'twitter:card',
+              content: 'summary_large_image',
             },
           ]}
         >
