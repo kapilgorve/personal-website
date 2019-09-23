@@ -4,6 +4,8 @@ import Layout from '../components/layout'
 import { Hero } from '../components/hero/hero'
 import Contact from '../components/contact/contact'
 import Blog from '../components/blog';
+import YoutubeList from '../components/youtubeList'
+
 
 const IndexPage = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
@@ -11,6 +13,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <Hero />
       <Blog posts={edges} />
+      <YoutubeList />
       <Contact />
     </Layout>
   )

@@ -18,6 +18,7 @@
   font-weight: 300;
   text-align: center;
   color: white;
+  word-break: break-all;
 }
 .portfolio h3 {
   font-size: 1.6rem;
