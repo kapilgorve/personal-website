@@ -1,44 +1,40 @@
-import React from 'react'
-import { getVideos } from '../../utils/youtubeApi'
+import React, { useState, useEffect } from 'react'
+import { getVideos } from '../../utils/youtubeApi';
 
 
-class YoutubeList extends React.Component {
-    state = {
-        videos: [],
-    };
+function YoutubeList() {
+    const [videos, setVideos] = useState([]);
 
-    componentDidMount() {
+    useEffect(() => {
         getVideos()
             .then(res => {
-                this.setState({ videos: res });
-            })
-    }
-    render() {
-        return (
-            <div>
-                <section className="portfolio">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12 text-center">
-                                <h2>Videos/Streams</h2>
-                            </div>
-                            {this.state.videos.map(video => {
-                                return (
-                                    <div className="col-md-6" key={video.snippet.resourceId.videoId}>
-                                        <div className="card">
-                                            <iframe width="100%" height="400"
-                                                title={`${video.snippet.title}`}
-                                                src={`https://www.youtube.com/embed/${video.snippet.resourceId.videoId}`} />
-                                        </div>
-                                    </div>
-                                )
-                            })}
+                setVideos(res);
+            });
+    }, []);
+    return (
+        <div>
+            <section className="portfolio">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12 text-center">
+                            <h2>Videos/Streams</h2>
                         </div>
+                        {videos.map(video => {
+                            return (
+                                <div className="col-md-6" key={video.snippet.resourceId.videoId}>
+                                    <div className="card">
+                                        <iframe width="100%" height="400"
+                                            title={`${video.snippet.title}`}
+                                            src={`https://www.youtube.com/embed/${video.snippet.resourceId.videoId}`} />
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
-                </section>
-            </div>
-        )
-    }
+                </div>
+            </section>
+        </div>
+    )
 }
 
 
