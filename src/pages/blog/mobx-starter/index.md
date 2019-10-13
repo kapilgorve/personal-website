@@ -1,4 +1,5 @@
-# MobX with React Native
+# Guide to MobX with React
+![cover image](./mobx-cover.jpg)
 
 As we all know state management is the most important and core part of any react application and as react is just a UI library there is a need for something to take care of the state of our app. State management can be troublesome and it is easy to create unmanageable react applications because of inconsistent state. 
 
