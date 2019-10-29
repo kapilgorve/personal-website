@@ -3,6 +3,7 @@ path: "/venuse"
 title: "Space Management Marketplace  Venuse"
 type: "portfolio"
 tags: ['AngularJs','Gulp', 'Html5', 'Css3','ExpressJs','MongoDB','NodeJs']
+date: '2019-09-22'
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/venuse/venuse-logo.jpg"
 screens: [
         'https://s3.ap-south-1.amazonaws.com/kapilgorve/venuse//venuse-1.jpg',

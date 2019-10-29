@@ -3,6 +3,7 @@ path: "/hercules"
 title: "P2 Training Portal"
 type: "portfolio"
 tags: ['AngularJs','HTML5','CSS3','Sass','Gulp','UI/UX']
+date: '2019-09-28'
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/hercules/hercules-logo.png"
 screens: [
         'https://s3.ap-south-1.amazonaws.com/kapilgorve/hercules/hercules-7.gif',

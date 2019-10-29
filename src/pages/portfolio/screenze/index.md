@@ -3,6 +3,7 @@ path: "/screenze"
 title: "Screenze"
 type: "portfolio"
 tags: ['ReactJs','MobX','Bootstrap','HTML5','CSS3','Sass']
+date: '2019-10-23'
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/screenze/screenze-logo.jpg"
 screens: [
         'https://s3.ap-south-1.amazonaws.com/kapilgorve/screenze/screenze-1.jpg',

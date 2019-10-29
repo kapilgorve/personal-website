@@ -3,6 +3,7 @@ path: "/rep"
 title: "'REP' - Food Tech App"
 type: "portfolio"
 tags: ['Ionic','AngularJs','CSS3','Design','Gulp','HTML5','Sass','UI/UX']
+date: '2019-09-01'
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/rep/rep-logo.png"
 screens:  [
         'https://s3.ap-south-1.amazonaws.com/kapilgorve/rep/rep-10.jpg',

@@ -3,6 +3,7 @@ path: "/crm"
 title: "CRM Mobile Application"
 type: "portfolio"
 tags: ['Ionic','AngularJs','Gulp', 'Html5', 'Css3']
+date: '2019-09-02'
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/crm/crm-logo.png"
 screens: [
         'https://s3.ap-south-1.amazonaws.com/kapilgorve/crm/crm-1.png',

@@ -3,6 +3,7 @@ path: "/eaton"
 title: "TC Eaton Internal Tool"
 type: "portfolio"
 tags: ['ReactJs','HTML5','CSS3','Sass']
+date: '2019-10-24'
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/eaton/topcoder-logo.png"
 screens: [
         'https://s3.ap-south-1.amazonaws.com/kapilgorve/eaton/eaton-1.png',

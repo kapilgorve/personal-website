@@ -3,6 +3,7 @@ path: "/ellai"
 title: "EllaiSys"
 type: "portfolio"
 tags: ['AngularJs', 'Html5', 'Css3','Design','jQuery','UI/UX']
+date: '2019-09-01'
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/ellaisys/eis-logo.png"
 screens: [
         'https://s3.ap-south-1.amazonaws.com/kapilgorve/ellaisys/eis-0.png',

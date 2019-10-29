@@ -3,6 +3,7 @@ path: "/pwg"
 title: "PWG Marketing"
 type: "portfolio"
 tags: ['Html5', 'Css3','Design','jQuery','UI/UX','LESS','Sass','WordPress']
+date: '2019-09-06'
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/pwg/pwg-logo.png"
 screens: [
         'https://s3.ap-south-1.amazonaws.com/kapilgorve/pwg/pwg-1.jpg',

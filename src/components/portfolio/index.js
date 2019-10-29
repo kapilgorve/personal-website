@@ -19,11 +19,11 @@ const PortFolio = ({ posts }) => {
             <div className="col-md-12 text-center">
               <h2>Portfolio</h2>
             </div>
-            <div className="card-columns">
               {posts.filter( p => p.node.frontmatter.thumb !== null ).map(({ node: post }) => {
                 const { frontmatter } = post;
                 return (
-                  <div className="card" key={post.id}>
+                  <div className="col-md-4" key={post.id}>
+                  <div className="card">
                     <Link to={`/details?id=${post.id}`}>
                       <div>
                         <div className="overlay">
@@ -34,7 +34,6 @@ const PortFolio = ({ posts }) => {
                             alt={`${frontmatter.title} logo`}
                           />
                         </div>
-
                         <div className="card-body">
                           <h3 className="card-title" style={titleStyle}>
                             {frontmatter.title}
@@ -50,9 +49,9 @@ const PortFolio = ({ posts }) => {
                       </div>
                     </Link>
                   </div>
+                  </div>
                 )
               })}
-            </div>
           </div>
         </div>
       </section>

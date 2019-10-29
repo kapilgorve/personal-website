@@ -59,7 +59,7 @@ export const Hero = () => (
               I build backends using NodeJs and NoSql databse MongoDb.
               <br/>
               <br/>
-              <b>Tech Stack:</b> React, Redux, NodeJs, MongoDb, Angular, React Native, Webpack, Typescript.
+              <b>Tech Stack:</b> React, Redux,React Native,GatsbyJs, NodeJs, MongoDb, Typescript.
             </p>
           </div>
         </div>

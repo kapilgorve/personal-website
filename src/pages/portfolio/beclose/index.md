@@ -3,6 +3,7 @@ path: "/beclose"
 title: "BeClose"
 type: "portfolio"
 tags: ['ReactNative','ReactJs','MobX','Firebase']
+date: '2019-10-25'
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/beclose/beclose-logo.png"
 screens: [ "https://s3.ap-south-1.amazonaws.com/kapilgorve/beclose/beclose-1.jpg",
         'https://s3.ap-south-1.amazonaws.com/kapilgorve/beclose/beclose-1.png',

@@ -3,6 +3,7 @@ path: "/crumbit"
 title: "The Micro News Network CRUMBIT"
 type: "portfolio"
 tags: ['AngularJs','Gulp', 'Html5', 'Css3','ExpressJs','MongoDB','NodeJs']
+date: '2019-09-21'
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/crumbit/crumbit-logo.jpg"
 screens: [
         'https://s3.ap-south-1.amazonaws.com/kapilgorve/crumbit/crumbit-1.jpg',

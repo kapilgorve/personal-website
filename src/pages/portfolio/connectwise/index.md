@@ -4,6 +4,7 @@ title: "ConnetWise Integration Tool"
 tags: ['ReactJs','Redux','Bootstrap','TypeScript']
 thumb: "https://s3.ap-south-1.amazonaws.com/kapilgorve/connectwise/lookingpoint-logo.jpg"
 type: "portfolio"
+date: '2019-10-26'
 screens: []
 ---
 Role:
