@@ -53,13 +53,13 @@ export const Hero = () => (
             <p>
               {' '}
               I provide freelance services specializing in frontend development.
-              I started my frontend career with AngularJs and right now working
-              with ReactJs. I'm also familiar with other frontend frameworks.
+              I started my frontend career with AngularJS and right now working
+              with ReactJS. I'm also familiar with other frontend frameworks.
               I build MVPs, prototypes. I believe in choosing best tool for the job.
               I build backends using NodeJs and NoSql databse MongoDb.
               <br/>
               <br/>
-              <b>Tech Stack:</b> React, Redux,React Native,GatsbyJs, NodeJs, MongoDb, Typescript.
+              <b>Tech Stack:</b> React,Redux,ReactNative, GatsbyJs, NodeJs, MongoDB, Typescript,.
             </p>
           </div>
         </div>
