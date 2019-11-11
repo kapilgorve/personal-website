@@ -56,7 +56,7 @@ export const Hero = () => (
               I started my frontend career with AngularJS and right now working
               with React. I'm also familiar with other frontend frameworks.
               I build MVPs, prototypes. I believe in choosing the best tool for the job.
-              I build backends using NodeJs and NoSQL database MongoDb.
+              I build backends using NodeJs and NoSQL database MongoDB.
               <br/>
               <br/>
               <b>Tech Stack:</b> React,Redux,ReactNative, GatsbyJs, NodeJs, MongoDB, Typescript,.
