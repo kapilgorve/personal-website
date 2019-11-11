@@ -29,7 +29,7 @@ export const Hero = () => (
             Freelance Web developer working in Javascript stack.
             My journey with web started from tinkering css in dev tools.
             Then I did some design work and came back to web dev.
-            I have worked on variety of
+            I have worked on a variety of
             projects on web and mobile apps from design to development. I am a
             full stack developer and designer.
             </p>
@@ -77,9 +77,9 @@ export const Hero = () => (
               Not everyone has had good experience dealing with freelancers.
               There are lot of obstacles in communication, process and progress tracking.
               I am a good listener and has observed complaints in freelance space.
-              Having worked with startups, I have realized painpoints of hiring
+              Having worked with startups, I have realized pain points of hiring
               freelancers. I have modified my work style, ethics, pricing
-              structure, tools, delievery methods to address these issues. So
+              structure, tools, delivery methods to address these issues. So
               when you consider to hire me, you have to only worry about the
               product itself.{' '}
             </p>
