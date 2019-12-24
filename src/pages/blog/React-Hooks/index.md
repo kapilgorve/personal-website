@@ -2,7 +2,7 @@
 title: 'React Hooks - Built-In and Custom'
 tags: ['ReactJs', 'React Hooks']
 type: 'blog'
-date: '2019-11-1'
+date: '2019-11-01'
 description: 'Intro to react hooks and its types.'
 ---
 
@@ -53,8 +53,32 @@ React gives us the independence of using the built-in hooks, such as useState, o
 <b>Using a single state -</b>
 The following example captures user input.
 
-<img src="./tt1.png"/>
-Here, ```useState``` is a Hook. We have called it inside the function component to add some local state to it, that React will preserve in between re-renders.
+```javascript
+import React, { useState } from 'react'
+
+const Todo = props => {
+  const [todoname, setTodoName] = useState('')
+
+  const inputChangeHandler = event => {
+    setTodoName(event.target.value)
+  }
+
+  return (
+    <React.Fragment>
+      <input
+        type="text"
+        placeholder="todo"
+        value={todoname}
+        onChange={inputChangeHandler}
+      />
+    </React.Fragment>
+  )
+}
+
+export default Todo
+```
+
+Here, `useState` is a Hook. We have called it inside the function component to add some local state to it, that React will preserve in between re-renders.
 
 `useState` takes the initial argument as the input, as you may notice, here we have passed an empty string as the initial state for the todoInput.
 
@@ -69,7 +93,44 @@ The following code snippet renders the list of the user input on screen. Here, w
 1.  That captures the user input
 2.  That renders the list on the screen.
 
-<img src="./tt2.png"/>
+```javascript
+import React, { useState } from 'react'
+
+const Todo = props => {
+  const [todoname, setTodoName] = useState('')
+  const [todolist, setTodoList] = useState([])
+
+  const inputChangeHandler = event => {
+    setTodoName(event.target.value)
+  }
+
+  const todoAddhandler = () => {
+    setTodoList(todolist.concat(todoname))
+  }
+
+  return (
+    <React.Fragment>
+      <input
+        type="text"
+        placeholder="todo"
+        value={todoname}
+        onChange={inputChangeHandler}
+      />
+
+      <button type="button" onClick={todoAddhandler}>
+        Add
+      </button>
+      <ul>
+        {todolist.map(todo => (
+          <li>{todo}</li>
+        ))}
+      </ul>
+    </React.Fragment>
+  )
+}
+
+export default Todo
+```
 
 Here, we have added one more state for the `todoList`. Note, we have initialized the use case for `todoList` with an empty array - `const [todolist, setTodoList]=useState([]);`
 
@@ -96,7 +157,47 @@ document.title = `Todo : ${todoname} `;
 });
 ```
 
-<img src="./tt3.png"/>
+```javascript
+import React, { useState } from 'react'
+
+const Todo = props => {
+  const [todoname, setTodoName] = useState('')
+  const [todolist, setTodoList] = useState([])
+
+  const inputChangeHandler = event => {
+    setTodoName(event.target.value)
+  }
+
+  const todoAddhandler = () => {
+    setTodoList(todolist.concat(todoname))
+  }
+
+  useEffect(() => {
+    document.title = `Todo :  ${todoname} `;
+  })
+
+  return (
+    <React.Fragment>
+      <input
+        type="text"
+        placeholder="todo"
+        value={todoname}
+        onChange={inputChangeHandler}
+      />
+      <button type="button" onClick={todoAddhandler}>
+        Add
+      </button>
+      <ul>
+        {todolist.map(todo => (
+          <li>{todo}</li>
+        ))}
+      </ul>
+    </React.Fragment>
+  )
+}
+
+export default Todo
+```
 
 We have passed a function that sets the title of the document after every render.We get the following result -
 
@@ -115,7 +216,56 @@ Custom Hooks are prefixed with the word “use”, similar to “useState” and
 They support code re-usability. Suppose, we have 2 function components that have almost the same logic. In this case, we need not write our stateful logic again for both of the components, instead, we can use custom hooks, i.e create a third function with that common logic and implement it in the other two functions.
 
 Thus, Custom Hooks help us to write code in a much more simpler and cleaner way.
-<img src="./tt4.png"/>
+
+``` javascript
+
+import React, { useState } from "react";
+
+const Todo = props => {
+  const [todoname, setTodoName] = useState("");
+  const [todolist, setTodoList] = useState([]);
+
+  const inputChangeHandler = event => {
+    setTodoName(event.target.value);
+  };
+
+  const todoAddhandler = () => {
+    setTodoList(todolist.concat(todoname));
+  };
+
+  // Custom Hook
+  const useDocumentUpdate = () => {
+    useEffect(() => {
+      document.title = `Todo :  ${todoname} `;
+    });
+  };
+
+  //Using the custom hook
+  useDocumentUpdate();
+  return (
+    <React.Fragment>
+      <input
+        type="text"
+        placeholder="todo"
+        value={todoname}
+        onChange={inputChangeHandler}
+      />
+
+      <button type="button" onClick={todoAddhandler}>
+        Add
+      </button>
+      <ul>
+        {todolist.map(todo => (
+          <li>{todo}</li>
+        ))}
+      </ul>
+    </React.Fragment>
+
+    );
+};
+
+export default Todo;
+```
 Here, we have created a custom hook, that contains the code for our document title updation -
 
 ```
