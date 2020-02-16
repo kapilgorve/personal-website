@@ -9,6 +9,9 @@ import YoutubeList from '../components/youtubeList'
 
 const IndexPage = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
+  if (typeof window === 'undefined') {
+    return null
+  }
     window.omnisend = window.omnisend || [];
     omnisend.push(["accountID", "5e48d82d4c7fa47e7cb56127"]);
     omnisend.push(["track", "$pageViewed"]);
