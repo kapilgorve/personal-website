@@ -3,6 +3,10 @@
   "description": "Kapil Gorve Portfolio website",
   "version": "1.0.0",
   "author": "Kapil Gorve <kapilsg186@gmail.com>",
+  "engines": {
+    "node": "10.13.0",
+    "npm": ">=6.0.0"
+  },
   "dependencies": {
     "gatsby": "^2.3.5",
     "gatsby-plugin-disqus": "^1.1.2",
