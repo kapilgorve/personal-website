@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql} from 'gatsby'
+import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet';
 import { UncontrolledCarousel } from 'reactstrap'
 import Layout from '../../components/layout'
@@ -12,15 +12,11 @@ const details = ({ data }) => {
   const url = new window.URL(window.location.href)
   const id = url.searchParams.get('id')
 
-  let post, content
-  posts.map(({ node }) => {
-    if (node.id === id) {
-      post = node.frontmatter
-      content = node.html
-    };
-    return node;
-  })
-  const images = post.screens.map(s => {
+  console.log(posts);
+  let post = posts.find(post => post.node.id === id);
+  console.log(post);
+  const { node: { frontmatter: { title, tags, screens }, html } } = post;
+  const images = screens.map(s => {
     return {
       src: s,
       caption: '',
@@ -30,16 +26,16 @@ const details = ({ data }) => {
   return (
     <Layout>
       <Helmet>
-         <meta name="robots" content="noindex, nofollow" />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <div className="details">
         <div>
-          <UncontrolledCarousel items={images} />
+          {images.length > 0 && <UncontrolledCarousel items={images} />}
           <div className="container">
             <div className="col-md-10 article">
-              <h2 className="title">{post.title}</h2>
+              <h2 className="title">{title}</h2>
               <div className="tags">
-                {post.tags.map(t => {
+                {tags.map(t => {
                   return (
                     <div className="chip" key={t}>
                       {t}
@@ -49,7 +45,7 @@ const details = ({ data }) => {
               </div>
               <div
                 className="content"
-                dangerouslySetInnerHTML={{ __html: content }}
+                dangerouslySetInnerHTML={{ __html: html }}
               />
             </div>
           </div>
