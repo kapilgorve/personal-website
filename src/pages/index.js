@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { Hero } from '../components/hero/hero'
-import Contact from '../components/contact/contact'
 import Blog from '../components/blog';
 import YoutubeList from '../components/youtubeList'
 
@@ -14,7 +13,6 @@ const IndexPage = ({ data }) => {
       <Hero />
       <Blog posts={edges} />
       <YoutubeList />
-      <Contact />
     </Layout>
   )
 }
