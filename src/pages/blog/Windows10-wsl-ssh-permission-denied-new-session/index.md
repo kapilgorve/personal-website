@@ -22,7 +22,7 @@ I have been using WSL from long time. Most of it for experiment purposes only.
 
 There is always something in whole tech stack of the project that it won't work on WSL. Thats why I use Windows for frontend only projects and an Ubunutu installed on other drive for backend projects.
 
-For work we use DigitalOcean droplets to deploy projects for client demos. I didn't give mush thought to SSH until recently. We are deploying multiple single page business websites for the client. That means I had to connect to droplets using ssh keys. Using passwords became hectic. So I switched to ssh keys.
+For work we use DigitalOcean droplets to deploy projects for client demos. I didn't give much thought to SSH until recently. We are deploying multiple single page business websites for the client. That means I had to connect to droplets using ssh keys. Using passwords became hectic. So I switched to ssh keys.
 
 There was one tiny issue though. It quickly became annoying.
 
