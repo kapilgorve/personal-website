@@ -20,7 +20,7 @@ Turns out React Native has a `GeoLocation` service which gets included by defaul
 
 Referring to this github issue - https://github.com/facebook/react-native/issues/20879. There are three possible ways. I tried the first and easy one and that worked fine for me. I deleted `RCTGeolocation.xcodeproj` from `libraries` folder in XCode and rebuilt the app. You can see on the left Libraries in current app in below screenshot. This solved the `NSLocationAlwaysUsageDescription` issue.
 
-![Image of Yaktocat](xcode-libraries.png)
+![Xcode Libraries](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/all/xcode-libraries.png)
 
 
 Update- I am told that this issue will be fixed around React Native version 60.
