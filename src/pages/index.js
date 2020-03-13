@@ -1,24 +1,36 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { Hero } from '../components/hero/hero'
 import Blog from '../components/blog';
 
-const YoutubeList = React.lazy(() => import('../components/youtubeList'));
 
+class IndexPage extends React.Component {
+  state = {
+    YoutubeComponent: null,
+  };
 
-const IndexPage = ({ data }) => {
-  const { edges } = data.allMarkdownRemark;
-  return (
-    <Layout>
-      <Hero />
-      <Blog posts={edges} />
-      <Suspense fallback={<div>Loading Youtube videos...</div>}>
-        <YoutubeList />
-      </Suspense>
-    </Layout>
-  )
+  componentDidMount() {
+    import('../components/youtubeList')
+      .then(component => {
+        console.log(component);
+        this.setState({ YoutubeComponent: component.default });
+      });
+  }
+
+  render() {
+    const { edges } = this.props.data.allMarkdownRemark;
+    const { YoutubeComponent } = this.state;
+    return (
+      <Layout>
+        <Hero />
+        <Blog posts={edges} />
+        {YoutubeComponent && <YoutubeComponent />}
+      </Layout>
+    )
+  }
 }
+
 
 export const query = graphql`
 query IndexQuery {
