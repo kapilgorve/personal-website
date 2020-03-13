@@ -1,46 +1,59 @@
-import React from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 
 import Layout from '../components/layout'
 import Content, { HTMLContent } from '../components/content'
 import { extractCoverUrl } from '../utils/cover'
 
-export const BlogPostTemplate = ({
-  content,
-  contentComponent,
-  date,
-  title,
-  helmet,
-  id
-}) => {
-  const PostContent = contentComponent || Content
-  let disqusConfig = {
-    identifier: id,
-    title,
+export class BlogPostTemplate extends Component {
+  state = {
+    DisqusWrap: null,
+    CommentCountWrap: null,
+  };
+
+  componentDidMount() {
+    import('../components/disquswrap/Disqus')
+      .then(component => this.setState({ DisqusWrap: component.default }));
+
+    import('../components/disquswrap/CommentCount')
+      .then(component => this.setState({ CommentCountWrap: component.default }));
   }
-  return (
-    <section className="blog">
-      {helmet || ''}
-      <div className="container article">
-      <div className="row justify-content-md-center">
-        <div className="col-md-10 highlight">
-          <h1 style={titleStyle}>
-            {title}
-          </h1>
-          <p>{date}</p>
-          <CommentCount config={disqusConfig} placeholder={''} />
-          <div className="mt-3">
-            <PostContent content={content} />
-            <Disqus config={disqusConfig} />
+
+  render() {
+    const {
+      content,
+      contentComponent,
+      date,
+      title,
+      helmet,
+      id
+    } = this.props;
+    const { DisqusWrap, CommentCountWrap } = this.state;
+    const PostContent = contentComponent || Content;
+    let disqusConfig = { identifier: id, title };
+    return (
+      <section className="blog">
+        {helmet || ''}
+        <div className="container article">
+          <div className="row justify-content-md-center">
+            <div className="col-md-10 highlight">
+              <h1 style={titleStyle}>
+                {title}
+              </h1>
+              <p>{date}</p>
+              {CommentCountWrap && <CommentCountWrap config={disqusConfig} placeholder={''} />}
+              <div className="mt-3">
+                <PostContent content={content} />
+                {DisqusWrap && <DisqusWrap config={disqusConfig} />}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  )
+      </section>
+    )
+  }
 }
 
 BlogPostTemplate.propTypes = {
@@ -70,7 +83,7 @@ const BlogPost = ({ data }) => {
               name="description"
               content={`${post.frontmatter.description}`}
             />
-             <meta
+            <meta
               name="keywords"
               content={`${keywords}`}
             />
@@ -95,7 +108,7 @@ const BlogPost = ({ data }) => {
               name="og:site_name"
               content={`${data.site.siteMetadata.title}`}
             />
-             <meta
+            <meta
               name="og:type"
               content={`article`}
             />
@@ -104,7 +117,7 @@ const BlogPost = ({ data }) => {
               name="twitter:site"
               content={`${data.site.siteMetadata.social.twitter}`}
             />
-             <meta
+            <meta
               name="twitter:creator"
               content={`${data.site.siteMetadata.social.twitter}`}
             />
