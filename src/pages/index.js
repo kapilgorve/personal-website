@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { Hero } from '../components/hero/hero'
 import Blog from '../components/blog';
-import YoutubeList from '../components/youtubeList'
+
+const YoutubeList = React.lazy(() => import('../components/youtubeList'));
 
 
 const IndexPage = ({ data }) => {
@@ -12,7 +13,9 @@ const IndexPage = ({ data }) => {
     <Layout>
       <Hero />
       <Blog posts={edges} />
-      <YoutubeList />
+      <Suspense fallback={<div>Loading Youtube videos...</div>}>
+        <YoutubeList />
+      </Suspense>
     </Layout>
   )
 }
