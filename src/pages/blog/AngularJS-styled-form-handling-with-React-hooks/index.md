@@ -15,7 +15,7 @@ It's not possible though to have similar API. I am going to settle here for the 
 
 
 If you want to straight head out and play with the demo here you go.
-<iframe src="https://codesandbox.io/embed/y28ro3w45j?fontsize=14" title="Form Validation with React Hooks" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/y28ro3w45j?fontsize=14" title="Form Validation with React Hooks" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin" loading="lazy"></iframe>
 This is a basic React function component using hooks. Incase you have missed the `hooks` party.
 
 According to React docs-
