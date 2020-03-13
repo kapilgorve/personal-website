@@ -13,7 +13,6 @@ class IndexPage extends React.Component {
   componentDidMount() {
     import('../components/youtubeList')
       .then(component => {
-        console.log(component);
         this.setState({ YoutubeComponent: component.default });
       });
   }

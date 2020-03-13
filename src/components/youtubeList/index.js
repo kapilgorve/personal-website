@@ -24,7 +24,7 @@ function YoutubeList() {
                                 return (
                                     <div className="col-md-6" key={video.snippet.resourceId.videoId}>
                                         <div className="card">
-                                            <iframe width="100%" height="400"
+                                            <iframe width="100%" height="400" loading="lazy"
                                                 title={`${video.snippet.title}`}
                                                 src={`https://www.youtube.com/embed/${video.snippet.resourceId.videoId}`} />
                                         </div>
