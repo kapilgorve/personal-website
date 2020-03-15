@@ -72,10 +72,6 @@ body {
   padding-bottom: 2rem;
 }
 
-.blog {
-  background-color: rgb(244, 247, 246);
-}
-
 .article p {
   font-size: 1.5rem;
   line-height: 1.5;
@@ -99,7 +95,6 @@ body {
 
 .article .highlight {
   background: white;
-  padding: 4rem;
 }
 
 @media only screen and (max-width: 600px) {

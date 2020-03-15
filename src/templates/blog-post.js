@@ -36,9 +36,9 @@ export class BlogPostTemplate extends Component {
     return (
       <section className="blog">
         {helmet || ''}
-        <div className="container article">
+        <div className="container-fluid article">
           <div className="row justify-content-md-center">
-            <div className="col-md-10 highlight">
+            <div className="col-md-8 col-lg-6">
               <h1 style={titleStyle}>
                 {title}
               </h1>
