@@ -1,17 +1,15 @@
 ---
-title: "Starting my newsletter"
+title: "Why I am starting a newsletter in 2020"
 tags: ['personal']
 type : "blog"
 date : "2020-03-15"
-description: "Why I am starting a newsletter in 2020"
+description: "Starting a newsletter"
 ---
 I am starting a newsletter to connect with my social media friends and to stay in touch with them. I want to document my professional life journey. Share important milestones with you.
 
 ***I want us to be long term friends. Not a soulless entity on social media.***
 
-Right now I plan to write about technical content on my blog that I will share here. In future, I will be writing about freelancing/consulting, remote work and much more. Right now I plan to write about technical content on my blog that I will share here. In future, I will be writing about freelancing/consulting, remote work and much more.
-
-
+Right now I plan to write about technical content on my blog that I will share here. In future, I will be writing about freelancing/consulting, remote work and much more.
 
 ❌❌ NO SPAM. ❌❌ NO PROMOTION. ❌❌ NO SELLING THINGS.
 
