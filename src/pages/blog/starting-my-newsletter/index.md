@@ -27,6 +27,6 @@ We have become dependent on social media giants to stay connected. I want people
 Let's take back control to us.
 
 ## Learning in public
-Sometimes back I read about Shawn Wang's concept of 'Learn in public'. If you wait to become an expert to share your knowledge. Chances are you probably never will. Its a journey. You start somewhere and end up becoming an expert as a result. I want to start now.
+Sometimes back I read about Shawn Wang's concept of ['Learn in public'](https://www.swyx.io/writing/learn-in-public/). If you wait to become an expert to share your knowledge. Chances are you probably never will. Its a journey. You start somewhere and end up becoming an expert as a result. I want to start now.
 
 There are a lot of reasons which won't be possible to state here for starting this direct communication. I am a bit scared. I have observed more hardworking and smart people than I quit. Do I have what it takes to make it as an individual? I don't  know. We will find out in future. I want to explore this. I also want the support of good people in my network while I am doing this.
