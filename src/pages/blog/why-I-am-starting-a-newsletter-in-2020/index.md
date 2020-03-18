@@ -5,6 +5,9 @@ type : "blog"
 date : "2020-03-15"
 description: "Starting a newsletter"
 ---
+!['cover'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/newsletter.jpg)
+<sub><sup>[Photo by Debby Hudson on Unsplash](https://unsplash.com/photos/DR31squbFoA)</sup></sub>
+
 I am starting a newsletter to connect with my social media friends and to stay in touch with them. I want to document my professional life journey. Share important milestones with you.
 
 ***I want us to be long term friends. Not a soulless entity on social media.***
