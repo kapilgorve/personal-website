@@ -2,7 +2,7 @@
 title: "Why I am starting a newsletter in 2020"
 tags: ['personal']
 type : "blog"
-date : "2020-03-15"
+date : "2020-03-18"
 description: "Starting a newsletter"
 ---
 !['cover'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/newsletter.jpg)
