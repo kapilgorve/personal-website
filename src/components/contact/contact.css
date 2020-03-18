@@ -2,16 +2,17 @@
   padding-bottom: 2rem;
 }
 .contact h2 {
-  padding-top: 3rem;
+  padding: 2rem 0;
   font-size: 4rem;
   font-weight: 300;
+  text-align: center;
   background: linear-gradient(to right, #cc2b5e, rgba(24, 0, 80, 0.89));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .contact p {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   color: var(--dark);
 }
 .contact .icons {
@@ -23,10 +24,19 @@
   margin: auto 2rem;
 }
 .contact img {
-  height: 60px;
+  height: 40px;
 }
 @media only screen and (max-width: 600px) {
   .contact a {
-    margin: 2rem;
+    margin: 1rem;
   }
+}
+
+.contact .form {
+  justify-content: space-between;
+  margin: 3rem 0;
+}
+
+.contact .message {
+  text-align: center;
 }
