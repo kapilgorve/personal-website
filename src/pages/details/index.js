@@ -12,7 +12,6 @@ const details = ({ data }) => {
   const url = new window.URL(window.location.href)
   const id = url.searchParams.get('id')
 
-  console.log(posts);
   let post = posts.find(post => post.node.id === id);
   console.log(post);
   const { node: { frontmatter: { title, tags, screens }, html } } = post;
