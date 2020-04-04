@@ -5,7 +5,7 @@ type: 'blog'
 date: '2020-04-04'
 description: 'Windows 10 terminal : How to open in current folder, copy text'
 ---
-!['cover'](https://images.pexels.com/photos/289927/pexels-photo-289927.jpeg)
+!['cover'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/terminal.jpg)
 <sub><sup>Photo by Lewis Ngugi from [Pexels](https://www.pexels.com/photo/blur-business-close-up-coding-289927/)</sup></sub>
 
 
