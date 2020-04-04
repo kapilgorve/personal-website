@@ -1,4 +1,4 @@
----
+<!-- ---
 title: 'React dynamically load components and libraries'
 tags: ['ReactJs', 'Javascript']
 type: 'blog'
@@ -46,4 +46,4 @@ export const Welcome = () => (
 ```
 ## How to dynamically import a library
 This one is a bit tricky
-
+ -->

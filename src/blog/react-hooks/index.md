@@ -1,4 +1,4 @@
----
+<!-- ---
 title: 'Forget HOC and render props, Use React hooks to share state and state logic between components'
 tags: ['ReactJs', 'Javascript']
 type: 'blog'
@@ -65,4 +65,4 @@ export function useWindowSize() {
 
 
 
-```
+``` -->
