@@ -30,13 +30,11 @@ exports.createPages = ({ actions, graphql }) => {
   const { createRedirect, createPage } = actions;
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const portfolioPost = path.resolve(`./src/templates/portfolio-post.js`)
   return graphql(
     `
       {
-        allMarkdownRemark(
-          filter : {frontmatter : { type : {eq: "blog"}}}
-          limit: 1000
-        ) {
+        allMarkdownRemark(limit: 1000) {
           edges {
             node {
               fields {
@@ -44,6 +42,7 @@ exports.createPages = ({ actions, graphql }) => {
               }
               frontmatter {
                 title
+                type
               }
             }
           }
@@ -56,11 +55,11 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges
+    const blogPosts = result.data.allMarkdownRemark.edges.filter( ({node}) => node.frontmatter.type === 'blog' );
 
-    posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node
-      const next = index === 0 ? null : posts[index - 1].node
+    blogPosts.forEach((post, index) => {
+      const previous = index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
+      const next = index === 0 ? null : blogPosts[index - 1].node
 
       createPage({
         path: post.node.fields.slug,
@@ -73,8 +72,21 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
 
+    const portfolioPosts = result.data.allMarkdownRemark.edges.filter( ({node}) => node.frontmatter.type === 'portfolio' );
+
+    portfolioPosts.forEach((post) => {
+      createPage({
+        path: post.node.fields.slug,
+        component: portfolioPost,
+        context: {
+          slug: post.node.fields.slug,
+        },
+      })
+    })
+
     return null
   });
+
 
   // let redirectBatch = [
   //   {

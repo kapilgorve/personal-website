@@ -24,7 +24,7 @@ const PortFolio = ({ posts }) => {
                 return (
                   <div className="col-md-4" key={post.id}>
                   <div className="card">
-                    <Link to={`/details?id=${post.id}`}>
+                    <Link to={`${post.fields.slug}`}>
                       <div>
                         <div className="overlay">
                           <div />
