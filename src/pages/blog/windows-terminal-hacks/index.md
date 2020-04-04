@@ -5,8 +5,8 @@ type: 'blog'
 date: '2020-04-04'
 description: 'Windows 10 terminal : How to open in current folder, copy text'
 ---
-!['cover'](https://upload.wikimedia.org/wikipedia/commons/2/29/Linux_command-line._Bash._GNOME_Terminal._screenshot.png)
-<sub><sup>Photo by Wikipedia</sup></sub>
+!['cover'](https://images.pexels.com/photos/289927/pexels-photo-289927.jpeg)
+<sub><sup>Photo by Lewis Ngugi from [Pexels](https://www.pexels.com/photo/blur-business-close-up-coding-289927/)</sup></sub>
 
 
 ## Start Windows Terminal in current folder
