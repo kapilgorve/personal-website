@@ -81,6 +81,11 @@ body {
   word-break: break-word;
 }
 
+.article li {
+  font-size: 1.4rem;
+  word-break: break-word;
+}
+
 .article p code {
   word-break: break-word;
 }
