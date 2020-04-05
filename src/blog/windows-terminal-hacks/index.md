@@ -1,5 +1,5 @@
 ---
-title: 'Widows Terminal Hacks'
+title: 'Windows Terminal Hacks'
 tags: ['Windows10']
 type: 'blog'
 date: '2020-04-04'
