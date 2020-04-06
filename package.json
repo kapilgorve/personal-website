@@ -13,6 +13,7 @@
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-plugin-sitemap": "^2.0.12",
+    "gatsby-remark-autolink-headers": "^2.2.1",
     "gatsby-remark-images": "^2.0.3",
     "gatsby-remark-prismjs": "^3.2.6",
     "gatsby-source-filesystem": "^2.0.28",
