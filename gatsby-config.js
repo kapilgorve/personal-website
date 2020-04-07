@@ -80,5 +80,13 @@ module.exports = {
         shortname: `kapilgorve`
       }
     },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.jskap.com',
+        sitemap: 'https://www.jskap.com/sitemap.xml',
+        policy: [{ userAgent: '*', disallow: '/portfolio/' }]
+      }
+    },
   ],
 }

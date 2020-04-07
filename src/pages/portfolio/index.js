@@ -10,7 +10,7 @@ const PortfolioPage = ({ data }) => {
   return (
     <Layout>
       <Helmet>
-        <meta name="robots" content="noindex, nofollow" />
+        <meta name="title" content="Kapil Gorve Freelance Portfolio" />
       </Helmet>
       <PortFolio posts={edges} />
     </Layout>
