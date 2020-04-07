@@ -3,7 +3,7 @@ module.exports = {
     title: 'Kapil Gorve Freelance Web Developer',
     author: 'Kapil Gorve',
     description: 'Portfolio and blog by Kapil Gorve.',
-    siteUrl: 'https://www.jskap.com',
+    siteUrl: 'https://www.jskap.com/',
     coverUrl: 'https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/Kapil+Gorve+www.jskap.com-site-cover.jpg',
     coverUrlHigh: 'https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/Kapil+Gorve+www.jskap.com-site-cover+high.jpg',
     social: {
@@ -83,7 +83,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.jskap.com',
+        host: 'https://www.jskap.com/',
         sitemap: 'https://www.jskap.com/sitemap.xml',
         policy: [{ userAgent: '*', disallow: '/portfolio/' }]
       }
