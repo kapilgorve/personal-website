@@ -2,7 +2,7 @@
 title: 'Windows Terminal Hacks'
 tags: ['Windows10']
 type: 'blog'
-date: '2020-06-04'
+date: '2020-04-06'
 description: 'Windows 10 terminal : How to open in current folder, copy text'
 ---
 !['cover'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/terminal.jpg)
