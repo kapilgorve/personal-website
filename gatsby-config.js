@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Kapil Gorve Freelance Web Developer',
+    title: 'Kapil Gorve',
     author: 'Kapil Gorve',
-    description: 'Portfolio and blog by Kapil Gorve.',
+    description: 'Freelance ReactJs, NodeJs, ReactNative.',
     siteUrl: 'https://www.jskap.com/',
     coverUrl: 'https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/Kapil+Gorve+www.jskap.com-site-cover.jpg',
     coverUrlHigh: 'https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/Kapil+Gorve+www.jskap.com-site-cover+high.jpg',
@@ -13,7 +13,12 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: [`/portfolio/*`,],
+      }
+    },
     'gatsby-plugin-netlify',
     'gatsby-plugin-sharp',
     {
