@@ -7,13 +7,13 @@ const Header = () => (
     <Link to="/" className="navbar-brand">
       Home
     </Link>
-    <Link to="/blog" className="navbar-brand">
+    <Link to="/blog/" className="navbar-brand">
       Blog
     </Link>
-    <Link to="/portfolio" className="navbar-brand">
+    <Link to="/portfolio/" className="navbar-brand">
       Portfolio
     </Link>
-    <Link to="/resume" className="navbar-brand">
+    <Link to="/resume/" className="navbar-brand">
       Resume
     </Link>
   </nav>
