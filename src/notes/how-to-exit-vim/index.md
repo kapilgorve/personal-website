@@ -1,5 +1,5 @@
 ---
-title: 'How to exit VIM'
+title: 'How to exit Vim'
 tags: []
 type: 'note'
 date: '2020-04-08'
