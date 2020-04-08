@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import Content, { HTMLContent } from '../components/content'
 import { extractCoverUrl } from '../utils/cover'
+import SEO from '../components/seo'
 
 export class BlogPostTemplate extends Component {
   state = {
@@ -66,8 +66,8 @@ BlogPostTemplate.propTypes = {
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
+  const {title, description, date, tags} = post.frontmatter;
   const coverUrl = extractCoverUrl(post.html);
-  const keywords = post.frontmatter.tags.toString();
 
   return (
     <Layout>
@@ -75,73 +75,17 @@ const BlogPost = ({ data }) => {
         id={post.id}
         content={post.html}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
-        helmet={
-          <Helmet titleTemplate="%s | Blog">
-            <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
-            <meta
-              name="keywords"
-              content={`${keywords}`}
-            />
-            {/* OpenGraph/Facebook tags */}
-            <meta
-              name="og:title"
-              content={`${post.frontmatter.title}`}
-            />
-            <meta
-              name="og:description"
-              content={`${post.frontmatter.description}`}
-            />
-            <meta
-              name="og:image"
-              content={`${coverUrl}`}
-            />
-            <meta
-              name="og:url"
-              content={`${data.site.siteMetadata.siteUrl}${post.fields.slug}`}
-            />
-            <meta
-              name="og:site_name"
-              content={`${data.site.siteMetadata.title}`}
-            />
-            <meta
-              name="og:type"
-              content={`article`}
-            />
-            {/* Twitter tags */}
-            <meta
-              name="twitter:site"
-              content={`${data.site.siteMetadata.social.twitter}`}
-            />
-            <meta
-              name="twitter:creator"
-              content={`${data.site.siteMetadata.social.twitter}`}
-            />
-            <meta
-              name="twitter:title"
-              content={`${post.frontmatter.title}`}
-            />
-            <meta
-              name="twitter:description"
-              content={`${post.frontmatter.description}`}
-            />
-            <meta
-              name="twitter:card"
-              content={`summary_large_image`}
-            />
-            <meta
-              name="twitter:image"
-              content={`${coverUrl}`}
-            />
-          </Helmet>
-        }
-        tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
-        date={post.frontmatter.date}
+        description={description}
+        helmet={<SEO
+            title={title}
+            description={description}
+            image={coverUrl}
+            pathname={post.fields.slug}
+            isArticle={true}
+            date={date}
+            tags={tags}
+            keywords={tags.toString()}
+          />}
       />
     </Layout>
   )
@@ -160,7 +104,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         siteUrl
-        title
+        defaultTitle
         social {
           twitter
         }

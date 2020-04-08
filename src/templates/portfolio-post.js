@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet';
-import { UncontrolledCarousel } from 'reactstrap'
+=import { UncontrolledCarousel } from 'reactstrap'
 import Layout from '../components/layout'
 
 const PortfolioPost = ({ data }) => {
@@ -16,9 +15,6 @@ const PortfolioPost = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet>
-        <meta name="robots" content="noindex, nofollow" />
-      </Helmet>
       <div className="details">
         <div>
           {images.length > 0 && <UncontrolledCarousel items={images} />}

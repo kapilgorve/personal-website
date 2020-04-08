@@ -1,15 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: 'Kapil Gorve',
+    defaultTitle: 'Kapil Gorve',
     author: 'Kapil Gorve',
-    description: 'Freelance ReactJs, NodeJs, ReactNative.',
+    defaultDescription: 'Freelance ReactJs, NodeJs, ReactNative.',
     siteUrl: 'https://www.jskap.com/',
-    coverUrl: 'https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/Kapil+Gorve+www.jskap.com-site-cover.jpg',
-    coverUrlHigh: 'https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/Kapil+Gorve+www.jskap.com-site-cover+high.jpg',
+    defaultImage: 'https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/Kapil+Gorve+www.jskap.com-site-cover.jpg',
     social: {
       twitter: '@kapilgorve',
     },
     googleSiteVerification: 'wQ_f9X_15oprPRnRxUYGguIh0Hx7VaPbGECLUKMxgJI',
+    defaultKeywords : 'ReactJs,NodeJs, React Native, GatsbyJs',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
