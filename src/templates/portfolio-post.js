@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-=import { UncontrolledCarousel } from 'reactstrap'
+import { UncontrolledCarousel } from 'reactstrap'
 import Layout from '../components/layout'
 
 const PortfolioPost = ({ data }) => {
