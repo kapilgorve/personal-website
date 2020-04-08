@@ -56,7 +56,7 @@ const titleStyle = {
 }
 
 export const query = graphql`
-  query NoteQuery($slug: String!) {
+  query NoteQuery {
     allMarkdownRemark(
       filter: { frontmatter: { type: { eq: "note" } } }
       sort: { fields: [frontmatter___date], order: DESC }
