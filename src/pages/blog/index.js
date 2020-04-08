@@ -2,11 +2,18 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 
 import Layout from '../../components/layout'
+import SEO from '../../components/seo'
 
 const BlogIndex = ({ data }) => {
   const { edges } = data.allMarkdownRemark
   return (
     <Layout>
+      <SEO
+        title="Blog by Kapil Gorve"
+        description="Tech blog on ReactJs,NodeJs,React Native, GatsbyJs"
+        image="https://images.pexels.com/photos/733857/pexels-photo-733857.jpeg?h=630&w=1200"
+        pathname={'blog/'}
+      />
       <div className="container blog-index">
         <h1 className="mt-5 mb-5">Articles</h1>
         <div className="row mb-2">
