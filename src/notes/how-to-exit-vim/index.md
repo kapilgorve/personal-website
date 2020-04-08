@@ -3,7 +3,7 @@ title: 'How to exit VIM'
 tags: []
 type: 'note'
 date: '2020-04-08'
-description: 'How to save and exit from VIM'
+description: 'How to save and exit from Vim'
 ---
 1. Press `esc` key.
 2. Type, `:q`, press return.
