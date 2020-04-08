@@ -16,7 +16,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: [`/portfolio/*`,],
+        exclude: [`/portfolio/*`, '/portfolio/'],
       }
     },
     'gatsby-plugin-netlify',
@@ -90,7 +90,7 @@ module.exports = {
       options: {
         host: 'https://www.jskap.com/',
         sitemap: 'https://www.jskap.com/sitemap.xml',
-        policy: [{ userAgent: '*', disallow: '/portfolio/' }]
+        policy: [{ userAgent: '*', disallow: '/portfolio/',disallow: '/portfolio/*'  }]
       }
     },
   ],
