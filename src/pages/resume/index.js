@@ -7,7 +7,6 @@ const Resume = () => (
     <SEO
         title="Kapil Gorve Resume"
         description="Freelance ReactJs,Redux,NodeJs, React Native in Pune, India."
-        image="https://images.unsplash.com/photo-1586281380349-632531db7ed4?fit=crop&w=1200&h=630"
         pathname="resume/"
       />
     <div className="resume" />
