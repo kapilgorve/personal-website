@@ -139,9 +139,11 @@ module.exports = {
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [
                     { 'markdown': edge.node.rawMarkdownBody },
-                    { "content:encoded": edge.node.html },
+                    { tags: edge.node.frontmatter.tags.join(',')},
+                    // { "content:encoded": edge.node.rawMarkdownBody },
                     { 'footer': `\nThis post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}.` },
-                    ...tags],
+                    // ...tags
+                  ],
                 })
               })
             },
