@@ -107,13 +107,30 @@ module.exports = {
                 site_url: siteUrl
               }
             }
+            allMarkdownRemark {
+              edges {
+                node {
+                  rawMarkdownBody
+                  frontmatter {
+                    date
+                    description
+                    path
+                    tags
+                    title
+                  }
+                  fields {
+                    slug
+                  }
+                }
+              }
+            }
           }
         `,
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
-                // console.log(edge.node.frontmatter.tags);
+                // console.log(edge.node.rawMarkdownBody);
                 const tags = edge.node.frontmatter.tags.map(tag => ({ "tag": tag }));
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.frontmatter.description,
@@ -121,10 +138,10 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [
-                    {'markdown' : edge.node.rawMarkdownBody},
+                    { 'markdown': edge.node.rawMarkdownBody },
                     { "content:encoded": edge.node.html },
-                  {'footer': `\nThis post was originally published at ${site.siteMetadata.siteUrl+edge.node.fields.slug}.`},
-                  ...tags],
+                    { 'footer': `\nThis post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}.` },
+                    ...tags],
                 })
               })
             },

@@ -1,6 +1,6 @@
 ---
 title: 'How to exit Vim'
-tags: []
+tags: ['Linux']
 type: 'note'
 date: '2020-04-08'
 description: 'How to save and exit from Vim'
