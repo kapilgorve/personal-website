@@ -9,7 +9,7 @@ module.exports = {
       twitter: '@kapilgorve',
     },
     googleSiteVerification: 'wQ_f9X_15oprPRnRxUYGguIh0Hx7VaPbGECLUKMxgJI',
-    defaultKeywords : 'ReactJs,NodeJs,React Native,GatsbyJs',
+    defaultKeywords: 'ReactJs,NodeJs,React Native,GatsbyJs',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -35,37 +35,37 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     {
-    resolve: `gatsby-transformer-remark`,
-    options: {
-      plugins: [
-        {
-          resolve: `gatsby-remark-autolink-headers`,
-          options: {
-            offsetY: `100`,
-            maintainCase: true,
-            removeAccents: true,
-            isIconAfterHeader: true,
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `100`,
+              maintainCase: true,
+              removeAccents: true,
+              isIconAfterHeader: true,
+            },
           },
-        },
-        {
-          resolve: `gatsby-remark-prismjs`,
-          options: {
-            inlineCodeMarker: null,
-            noInlineHighlight: false,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              inlineCodeMarker: null,
+              noInlineHighlight: false,
+            },
           },
-        },
-        {
-          resolve: `gatsby-remark-images`,
-          options: {
-            // It's important to specify the maxWidth (in pixels) of
-            // the content container as this plugin uses this as the
-            // base for generating different widths of each image.
-            maxWidth: 2000,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 2000,
+            },
           },
-        },
-      ],
+        ],
+      },
     },
-  },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -90,7 +90,7 @@ module.exports = {
       options: {
         host: 'https://www.jskap.com/',
         sitemap: 'https://www.jskap.com/sitemap.xml',
-        policy: [{ userAgent: '*', disallow: '/portfolio/',disallow: '/portfolio/*'  }]
+        policy: [{ userAgent: '*', disallow: '/portfolio/', disallow: '/portfolio/*' }]
       }
     },
     {
@@ -100,6 +100,7 @@ module.exports = {
           {
             site {
               siteMetadata {
+                author
                 defaultTitle
                 defaultDescription
                 siteUrl
@@ -112,15 +113,14 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
+                // console.log(edge.node.frontmatter.tags);
+                const tags = edge.node.frontmatter.tags.map(tag => ({ "tag": tag }));
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{
-                     "content:encoded": edge.node.html,
-                     "tags" : edge.node.frontmatter.tags,
-                     }],
+                  custom_elements: [{ "content:encoded": edge.node.html }, ...tags],
                 })
               })
             },
@@ -138,6 +138,8 @@ module.exports = {
                       frontmatter {
                         title
                         date
+                        description
+                        tags
                       }
                     }
                   }
