@@ -120,8 +120,10 @@ module.exports = {
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html },
-                  {'footer': `This post was originally published at ${site.siteMetadata.siteUrl+edge.node.fields.slug}.`},
+                  custom_elements: [
+                    {'markdown' : edge.node.rawMarkdownBody},
+                    { "content:encoded": edge.node.html },
+                  {'footer': `\nThis post was originally published at ${site.siteMetadata.siteUrl+edge.node.fields.slug}.`},
                   ...tags],
                 })
               })
