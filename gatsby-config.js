@@ -97,41 +97,20 @@ module.exports = {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
-          {
-            site {
-              siteMetadata {
-                author
-                defaultTitle
-                defaultDescription
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-            allMarkdownRemark {
-              edges {
-                node {
-                  rawMarkdownBody
-                  frontmatter {
-                    date
-                    description
-                    path
-                    tags
-                    title
-                  }
-                  fields {
-                    slug
-                  }
-                }
-              }
+        {
+          site {
+            siteMetadata {
+              siteUrl
+              site_url: siteUrl
             }
           }
-        `,
+        }
+      `,
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
-                // console.log(edge.node.rawMarkdownBody);
-                const tags = edge.node.frontmatter.tags.map(tag => ({ "tag": tag }));
+                console.log(edge.node);
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
@@ -141,34 +120,33 @@ module.exports = {
                     { 'markdown': edge.node.rawMarkdownBody },
                     { tags: edge.node.frontmatter.tags.join(',')},
                     // { "content:encoded": edge.node.rawMarkdownBody },
-                    { 'footer': `\nThis post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}.` },
+                    { 'footer': `\nThis post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}` },
                     // ...tags
                   ],
                 })
               })
             },
             query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: {frontmatter: {type: {nin: "portfolio"}}},
-                ) {
-                  edges {
-                    node {
-                      excerpt
-                      html
-                      fields { slug }
-                      frontmatter {
-                        title
-                        date
-                        description
-                        tags
-                      }
-                    }
-                  }
+        {
+          allMarkdownRemark(
+            sort: { order: DESC, fields: [frontmatter___date] },
+            filter: {frontmatter: {type: {nin: "portfolio"}}},
+          ) {
+            edges {
+              node {
+                fields { slug }
+                rawMarkdownBody
+                frontmatter {
+                  title
+                  date
+                  description
+                  tags
                 }
               }
-            `,
+            }
+          }
+        }
+      `,
             output: "/rss.xml",
             title: "Kapil Gorve's Blog RSS Feed",
             // optional configuration to insert feed reference in pages:
