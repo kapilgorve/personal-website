@@ -1,0 +1,20 @@
+---
+title: 'Create React App Error - Template not provided'
+tags: ['ReactJs']
+type: 'note'
+date: '2020-04-13'
+description: 'How to Fix - A template was not provided'
+---
+## Create React App Error
+Error Message - `A template was not provided. This is likely because you're using an outdated version of create-react-app.
+Please note that global installs of create-react-app are no longer supported.`
+
+## Solution
+New versions of Create React App doesn't support global installs. Remove it globally.
+Try `npm uninstall -g create-react-app` . Then try again.
+
+Didn't work for me. Even after removing `create-react-app` globally. If your system has any projects using CRA in parent directory npm will pick up that version.
+
+Try `npx --ignore-existing create-react-app my-app`. This will ignore any installs you have in your system.
+
+CRA - `create-react-app`
