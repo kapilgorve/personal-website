@@ -110,17 +110,18 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
+                const footer = `<br><p>This post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}</p>`
                 return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [
-                    { 'markdown': edge.node.rawMarkdownBody },
-                    { tags: edge.node.frontmatter.tags.join(',')},
-                    // { "content:encoded": edge.node.rawMarkdownBody },
-                    { 'footer': `\nThis post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}` },
-                    // ...tags
+                    { markdown: edge.node.rawMarkdownBody },
+                    { category: edge.node.frontmatter.tags.join(',')},
+                    { content: edge.node.html + footer },
+                    { footer: footer },
+                    { description: edge.node.frontmatter.description},
+                    // keep description last for devto priority after content
                   ],
                 })
               })
@@ -135,6 +136,7 @@ module.exports = {
               node {
                 fields { slug }
                 rawMarkdownBody
+                html
                 frontmatter {
                   title
                   date
