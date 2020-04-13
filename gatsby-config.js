@@ -118,7 +118,7 @@ module.exports = {
                   custom_elements: [
                     { markdown: edge.node.rawMarkdownBody },
                     { category: edge.node.frontmatter.tags.join(',')},
-                    { content: edge.node.html + footer },
+                    { 'content:encoded': edge.node.html + footer },
                     { footer: footer },
                     { description: edge.node.frontmatter.description},
                     // keep description last for devto priority after content
