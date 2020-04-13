@@ -5,6 +5,9 @@ type: 'note'
 date: '2020-04-13'
 description: 'How to Fix - A template was not provided'
 ---
+![''](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/cra.jpg)
+<sub><sup>Photo from [CRA Docs](https://create-react-app.dev//)</sup></sub>
+
 ## Create React App Error
 Error Message - `A template was not provided. This is likely because you're using an outdated version of create-react-app.
 Please note that global installs of create-react-app are no longer supported.`
