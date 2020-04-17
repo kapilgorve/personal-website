@@ -10,6 +10,7 @@ module.exports = {
     },
     googleSiteVerification: 'wQ_f9X_15oprPRnRxUYGguIh0Hx7VaPbGECLUKMxgJI',
     defaultKeywords: 'ReactJs,NodeJs,React Native,GatsbyJs',
+    ogurl: 'https://friendly-heyrovsky-86d9f9.netlify.app/opengraph'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -110,7 +111,8 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
-                const footer = `<br><p>This post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}</p>`
+                const footer = `<br><p>This post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}</p>
+                👋 Hi! I’m Kapil. I am always chatty about building things, sharing my learnings, freelancing. Come say hi to me at <a href="https://twitter.com/kapilgorve">https://twitter.com/kapilgorve</a>`
                 return Object.assign({}, edge.node.frontmatter, {
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,

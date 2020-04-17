@@ -65,9 +65,12 @@ NotePostTemplate.propTypes = {
 }
 
 const NotePost = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { markdownRemark: post, site :{siteMetadata: {ogurl, social: {twitter}}} } = data
   const {title, description, date, tags} = post.frontmatter;
-  const coverUrl = extractCoverUrl(post.html);
+  let coverUrl = extractCoverUrl(post.html);
+  if(coverUrl === null){
+    coverUrl = `${ogurl}?&author=kapilgorve&title=${title}&tags=${tags.toString()}`
+  }
 
   return (
     <Layout>
@@ -96,11 +99,6 @@ const NotePost = ({ data }) => {
   )
 }
 
-NotePost.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
-}
 
 export default NotePost
 
@@ -110,6 +108,7 @@ export const pageQuery = graphql`
       siteMetadata {
         siteUrl
         defaultTitle
+        ogurl
         social {
           twitter
         }
