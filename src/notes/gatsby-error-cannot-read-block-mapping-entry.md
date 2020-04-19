@@ -2,7 +2,7 @@
 title: 'Gatsby Error - Do not use quotes and apostrophe in frontmatter properties'
 tags: ['GatsbyJs']
 type: 'note'
-date: '2020-04-09'
+date: '2020-04-19'
 description: 'can not read a block mapping entry; a multiline key may not be an implicit key at line'
 ---
 
