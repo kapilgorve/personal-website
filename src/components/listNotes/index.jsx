@@ -21,8 +21,8 @@ const ListNotes = ({ notes }) => {
               {notes.map(({ node: note }) => {
                 const { frontmatter } = note;
                 return (
-                  <div className="col-md-4 d-flex">
-                  <div className="card" key={note.id}>
+                  <div className="col-md-4 d-flex" key={note.id}>
+                  <div className="card">
                     <Link to={`${note.fields.slug}`}>
                         <div className="card-body">
                           <h3 className="card-title" style={titleStyle}>
