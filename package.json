@@ -33,8 +33,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "build": "GATSBY_ENV=production gatsby build",
+    "develop": "set GATSBY_ENV=development && gatsby develop",
     "format": "prettier --write '**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
