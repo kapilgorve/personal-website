@@ -18,12 +18,11 @@ const Blog = ({ posts }) => {
             <div className="col-md-12 text-center">
               <h2>My Blog</h2>
             </div>
-           <div className="col-md-12">
-           <div className="card-columns">
               {posts.map(({ node: post }) => {
                 const { frontmatter } = post;
                 return (
-                  <div className="card" key={post.id}>
+                  <div className="col-md-4 d-flex" key={post.id}>
+                  <div className="card">
                     <Link to={`${post.fields.slug}`}>
                         <div className="card-body">
                           <h3 className="card-title" style={titleStyle}>
@@ -39,12 +38,11 @@ const Blog = ({ posts }) => {
                         </div>
                     </Link>
                   </div>
+                  </div>
                 )
               })}
             </div>
            </div>
-          </div>
-        </div>
       </section>
     </div>
   )

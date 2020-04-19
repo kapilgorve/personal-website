@@ -18,11 +18,10 @@ const ListNotes = ({ notes }) => {
             <div className="col-md-12 text-center">
               <h2>My Notes</h2>
             </div>
-           <div className="col-md-12">
-           <div className="card-columns">
               {notes.map(({ node: note }) => {
                 const { frontmatter } = note;
                 return (
+                  <div className="col-md-4 d-flex">
                   <div className="card" key={note.id}>
                     <Link to={`${note.fields.slug}`}>
                         <div className="card-body">
@@ -39,11 +38,10 @@ const ListNotes = ({ notes }) => {
                         </div>
                     </Link>
                   </div>
+                  </div>
                 )
               })}
-            </div>
            </div>
-          </div>
         </div>
       </section>
     </div>
