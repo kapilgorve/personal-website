@@ -116,7 +116,7 @@ module.exports = {
                 let ogCoverImage= null ;
                 if(!edge.node.html.includes('img')){
                   let imageUrl = `${site.siteMetadata.ogurl}?&author=kapilgorve&title=${edge.node.frontmatter.title}&tags=${edge.node.frontmatter.tags.toString()}`;
-                  ogCoverImage = `<p><img src="${imageUrl}"></p>`
+                  ogCoverImage = `<br><p><img src="${imageUrl}"></p><br>`
                 }
 
                 const categories = edge.node.frontmatter.tags.map( tag => ({category: tag}));
