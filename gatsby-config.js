@@ -115,15 +115,17 @@ module.exports = {
 
                 let imageUrl = `${site.siteMetadata.ogurl}?&author=kapilgorve&title=${edge.node.frontmatter.title}&tags=${edge.node.frontmatter.tags.toString()}`;
                 let ogCoverHtml = `<br><p><img src="${imageUrl}"></p><br>`;
-                // let ogCoverMarkdown = `!['cover'](${imageUrl})`;
+                let mediumCover = `<br><p><img src="https://picsum.photos/1200/630"></p><br>`;
 
                 const categories = edge.node.frontmatter.tags.map( tag => ({category: tag}));
                 const footer = `<br><p>This post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}</p>
                 <br><p>👋 Hi! I’m Kapil. I am always chatty about building things, sharing my learnings, freelancing. Come say hi to me at <a target="_blank"  href="https://twitter.com/kapilgorve">https://twitter.com/kapilgorve</a></p>`
 
                 let content = edge.node.html + footer;
+                let markdownContent = edge.node.rawMarkdownBody;
                 if(!edge.node.html.includes('img')){
                  content = ogCoverHtml + content;
+                  markdownContent = mediumCover+  markdownContent;
                 }
 
                 return Object.assign({}, edge.node.frontmatter, {
@@ -132,7 +134,7 @@ module.exports = {
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [
                     ...categories,
-                    { markdown: edge.node.rawMarkdownBody },
+                    { markdown: markdownContent },
                     { 'content:encoded': content},
                     { footer: footer },
                     { description: edge.node.frontmatter.description},
