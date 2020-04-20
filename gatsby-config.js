@@ -115,7 +115,7 @@ module.exports = {
 
                 let imageUrl = `${site.siteMetadata.ogurl}?&author=kapilgorve&title=${edge.node.frontmatter.title}&tags=${edge.node.frontmatter.tags.toString()}`;
                 let ogCoverHtml = `<br><p><img src="${imageUrl}"></p><br>`;
-                let mediumCover = `<br><p><img src="https://picsum.photos/1200/630"></p><br>`;
+                let mediumCover = `<br><p><img src="https://picsum.photos/1200/630?blur"></p><br>`;
 
                 const categories = edge.node.frontmatter.tags.map( tag => ({category: tag}));
                 const footer = `<br><p>This post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}</p>
