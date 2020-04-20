@@ -113,10 +113,11 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
 
-                let ogCoverImage= null ;
+                let ogCoverImage, ogCoverMarkdown = null ;
                 if(!edge.node.html.includes('img')){
                   let imageUrl = `${site.siteMetadata.ogurl}?&author=kapilgorve&title=${edge.node.frontmatter.title}&tags=${edge.node.frontmatter.tags.toString()}`;
-                  ogCoverImage = `<br><p><img src="${imageUrl}"></p><br>`
+                  ogCoverHtml = `<br><p><img src="${imageUrl}"></p><br>`;
+                  ogCoverMarkdown = `!['cover'](${imageUrl})`;
                 }
 
                 const categories = edge.node.frontmatter.tags.map( tag => ({category: tag}));
@@ -130,7 +131,7 @@ module.exports = {
                   custom_elements: [
                     ...categories,
                     { markdown: edge.node.rawMarkdownBody },
-                    ogCoverImage && { mediumCover: ogCoverImage},
+                    ogCoverMarkdown && { mediumCover: ogCoverMarkdown},
                     { 'content:encoded': ogCoverImage + edge.node.html + footer },
                     { footer: footer },
                     { description: edge.node.frontmatter.description},
