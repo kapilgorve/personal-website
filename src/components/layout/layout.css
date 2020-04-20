@@ -83,6 +83,8 @@ body {
 .article li {
   font-size: 1.4rem;
   word-break: break-word;
+  margin: 10px 0;
+  line-height: 1.6;
 }
 
 .article p code {
