@@ -113,7 +113,7 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
 
-                let ogCoverImage, ogCoverMarkdown = null ;
+                let ogCoverHtml, ogCoverMarkdown = null ;
                 if(!edge.node.html.includes('img')){
                   let imageUrl = `${site.siteMetadata.ogurl}?&author=kapilgorve&title=${edge.node.frontmatter.title}&tags=${edge.node.frontmatter.tags.toString()}`;
                   ogCoverHtml = `<br><p><img src="${imageUrl}"></p><br>`;
@@ -132,7 +132,7 @@ module.exports = {
                     ...categories,
                     { markdown: edge.node.rawMarkdownBody },
                     ogCoverMarkdown && { mediumCover: ogCoverMarkdown},
-                    { 'content:encoded': ogCoverImage + edge.node.html + footer },
+                    { 'content:encoded': ogCoverHtml + edge.node.html + footer },
                     { footer: footer },
                     { description: edge.node.frontmatter.description},
                     // keep description last for devto priority after content
