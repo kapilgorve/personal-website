@@ -111,6 +111,7 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
+                const categories = edge.node.frontmatter.tags.map( tag => ({category: tag}));
                 const footer = `<br><p>This post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}</p>
                 <br><p>👋 Hi! I’m Kapil. I am always chatty about building things, sharing my learnings, freelancing. Come say hi to me at <a target="_blank"  href="https://twitter.com/kapilgorve">https://twitter.com/kapilgorve</a></p>`
                 return Object.assign({}, edge.node.frontmatter, {
@@ -118,8 +119,9 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [
+                    ...categories,
                     { markdown: edge.node.rawMarkdownBody },
-                    { category: edge.node.frontmatter.tags.join(',')},
+                    { mediumtags: edge.node.frontmatter.tags.join(',')},
                     { 'content:encoded': edge.node.html + footer },
                     { footer: footer },
                     { description: edge.node.frontmatter.description},
