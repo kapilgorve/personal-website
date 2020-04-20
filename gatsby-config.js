@@ -113,16 +113,18 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
 
-                let ogCoverHtml, ogCoverMarkdown = null ;
-                if(!edge.node.html.includes('img')){
-                  let imageUrl = `${site.siteMetadata.ogurl}?&author=kapilgorve&title=${edge.node.frontmatter.title}&tags=${edge.node.frontmatter.tags.toString()}`;
-                  ogCoverHtml = `<br><p><img src="${imageUrl}"></p><br>`;
-                  ogCoverMarkdown = `!['cover'](${imageUrl})`;
-                }
+                let imageUrl = `${site.siteMetadata.ogurl}?&author=kapilgorve&title=${edge.node.frontmatter.title}&tags=${edge.node.frontmatter.tags.toString()}`;
+                let ogCoverHtml = `<br><p><img src="${imageUrl}"></p><br>`;
+                // let ogCoverMarkdown = `!['cover'](${imageUrl})`;
 
                 const categories = edge.node.frontmatter.tags.map( tag => ({category: tag}));
                 const footer = `<br><p>This post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}</p>
                 <br><p>👋 Hi! I’m Kapil. I am always chatty about building things, sharing my learnings, freelancing. Come say hi to me at <a target="_blank"  href="https://twitter.com/kapilgorve">https://twitter.com/kapilgorve</a></p>`
+
+                let content = edge.node.html + footer;
+                if(!edge.node.html.includes('img')){
+                 content = ogCoverHtml + content;
+                }
 
                 return Object.assign({}, edge.node.frontmatter, {
                   date: edge.node.frontmatter.date,
@@ -131,8 +133,7 @@ module.exports = {
                   custom_elements: [
                     ...categories,
                     { markdown: edge.node.rawMarkdownBody },
-                    ogCoverMarkdown && { mediumCover: ogCoverMarkdown},
-                    { 'content:encoded': ogCoverHtml + edge.node.html + footer },
+                    { 'content:encoded': content},
                     { footer: footer },
                     { description: edge.node.frontmatter.description},
                     // keep description last for devto priority after content
