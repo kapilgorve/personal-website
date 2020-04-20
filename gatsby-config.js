@@ -130,7 +130,7 @@ module.exports = {
                   custom_elements: [
                     ...categories,
                     { markdown: edge.node.rawMarkdownBody },
-                    { mediumCover: ogCoverImage},
+                    ogCoverImage && { mediumCover: ogCoverImage},
                     { 'content:encoded': ogCoverImage + edge.node.html + footer },
                     { footer: footer },
                     { description: edge.node.frontmatter.description},
