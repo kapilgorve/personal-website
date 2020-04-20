@@ -34,6 +34,7 @@ For Linux -
 ```json
     "build": "GATSBY_ENV=production gatsby build",
 ```
+This is only if you want to build on local.
 
 If you are using any providers like Netlify use the Linux version. You will also need to add environment variables in the service provider.
 
