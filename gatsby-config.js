@@ -129,8 +129,8 @@ module.exports = {
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [
                     ...categories,
-                    { markdown: ogCoverImage + edge.node.rawMarkdownBody },
-                    { mediumtags: edge.node.frontmatter.tags.join(',')},
+                    { markdown: edge.node.rawMarkdownBody },
+                    { mediumCover: ogCoverImage},
                     { 'content:encoded': ogCoverImage + edge.node.html + footer },
                     { footer: footer },
                     { description: edge.node.frontmatter.description},
