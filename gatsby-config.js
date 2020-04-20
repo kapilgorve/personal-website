@@ -102,6 +102,7 @@ module.exports = {
           site {
             siteMetadata {
               siteUrl
+              ogurl
               site_url: siteUrl
             }
           }
@@ -110,21 +111,41 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
+              const {siteMetadata: {siteUrl, ogurl}} = site;
+
+              function extractCoverUrl(html){
+                if (html.includes('img')) {
+                    const rex = /<img[^>]+src="(https:\/\/[^">]+)"/g;
+                    const coverMatch = rex.exec(html)
+                    return coverMatch ? coverMatch[1] : null;
+                  }
+                  return null;
+            }
               return allMarkdownRemark.edges.map(edge => {
-                const categories = edge.node.frontmatter.tags.map( tag => ({category: tag}));
-                const footer = `<br><p>This post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}</p>
-                <br><p>👋 Hi! I’m Kapil. I am always chatty about building things, sharing my learnings, freelancing. Come say hi to me at <a target="_blank"  href="https://twitter.com/kapilgorve">https://twitter.com/kapilgorve</a></p>`
-                return Object.assign({}, edge.node.frontmatter, {
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+
+                const {node: {frontmatter, fields}} = edge;
+                const categories = frontmatter.tags.map( tag => ({category: tag}));
+                let cover_url, ogCoverImage;
+                if(extractCoverUrl(node.html) === null){
+                  cover_url = `${ogurl}?&author=kapilgorve&title=${title}&tags=${tags.toString()}`
+                  ogCoverImage = `<img src="${cover_url}" alt="'cover'">`
+                }
+
+                const footer = `<br><p>This post was originally published at ${siteUrl + fields.slug}</p>
+                <br><p>👋 Hi! I’m Kapil. I am always chatty about building things, sharing my learnings, freelancing.
+                 Come say hi to me at <a target="_blank"  href="https://twitter.com/kapilgorve">https://twitter.com/kapilgorve</a></p>`
+                return Object.assign({},frontmatter, {
+                  date: frontmatter.date,
+                  url: siteUrl + fields.slug,
+                  guid: siteUrl + fields.slug,
                   custom_elements: [
                     ...categories,
-                    { markdown: edge.node.rawMarkdownBody },
-                    { mediumtags: edge.node.frontmatter.tags.join(',')},
-                    { 'content:encoded': edge.node.html + footer },
+                    { markdown: ogCoverImage + edge.node.rawMarkdownBody },
+                    { mediumtags: frontmatter.tags.join(',')},
+                    { 'content:encoded': ogCoverImage+ node.html + footer },
                     { footer: footer },
-                    { description: edge.node.frontmatter.description},
+                    {'cover_url': cover_url}, //for dev.to
+                    { description: frontmatter.description},
                     // keep description last for devto priority after content
                   ],
                 })
