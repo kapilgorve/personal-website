@@ -65,7 +65,7 @@ NotePostTemplate.propTypes = {
 }
 
 const NotePost = ({ data }) => {
-  const { markdownRemark: post, site :{siteMetadata: {ogurl, social: {twitter}}} } = data
+  const { markdownRemark: post, site :{siteMetadata: {ogurl }} } = data;
   const {title, description, date, tags} = post.frontmatter;
   let coverUrl = extractCoverUrl(post.html);
   if(coverUrl === null){
@@ -109,9 +109,6 @@ export const pageQuery = graphql`
         siteUrl
         defaultTitle
         ogurl
-        social {
-          twitter
-        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

@@ -65,14 +65,18 @@ BlogPostTemplate.propTypes = {
 }
 
 const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { markdownRemark: post, site :{siteMetadata: {ogurl }} } = data
   const {title, description, date, tags} = post.frontmatter;
-  const coverUrl = extractCoverUrl(post.html);
+  let coverUrl = extractCoverUrl(post.html);
+  if(coverUrl === null){
+    coverUrl = `${ogurl}?&author=kapilgorve&title=${title}&tags=${tags.toString()}`
+  }
 
   return (
     <Layout>
       <BlogPostTemplate
         id={post.id}
+        title={post.frontmatter.title}
         content={post.html}
         contentComponent={HTMLContent}
         description={description}
@@ -103,11 +107,8 @@ export const pageQuery = graphql`
   query BlogPostByID($slug: String!) {
     site {
       siteMetadata {
-        siteUrl
         defaultTitle
-        social {
-          twitter
-        }
+        ogurl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
