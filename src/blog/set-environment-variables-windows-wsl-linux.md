@@ -1,6 +1,6 @@
 ---
 title: 'Set environment variable in Windows and WSL Linux in terminal'
-tags: ['Windows10', 'Linux', 'Programming']
+tags: ['Windows10', 'wsl', 'Linux', 'Programming']
 type: 'blog'
 date: '2020-04-21'
 description: 'How to set an environment variable from a command line and shell'
