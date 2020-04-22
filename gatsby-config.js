@@ -118,14 +118,14 @@ module.exports = {
                 let mediumCover = `<br><p><img src="https://picsum.photos/1200/630?blur=2"></p><br>`;
 
                 const categories = edge.node.frontmatter.tags.map( tag => ({category: tag}));
-                const footer = `<br><p>This post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}</p>
-                <br><p>👋 Hi! I’m Kapil. I am always chatty about building things, sharing my learnings, freelancing. Come say hi to me at <a target="_blank"  href="https://twitter.com/kapilgorve">https://twitter.com/kapilgorve</a></p>`
+                const avoidPayWall = `<br><p>This post was originally published at ${site.siteMetadata.siteUrl + edge.node.fields.slug}</p>`;
+                const footer = `<br><p>👋 Hi! I’m Kapil. I am always chatty about building things, sharing my learnings, freelancing. Come say hi to me at <a target="_blank"  href="https://twitter.com/kapilgorve">https://twitter.com/kapilgorve</a></p>`
 
                 let content = edge.node.html + footer;
                 let markdownContent = edge.node.rawMarkdownBody;
                 if(!edge.node.html.includes('img')){
                  content = ogCoverHtml + content;
-                  markdownContent = mediumCover+  markdownContent;
+                  markdownContent = mediumCover + avoidPayWall+ markdownContent;
                 }
 
                 return Object.assign({}, edge.node.frontmatter, {
