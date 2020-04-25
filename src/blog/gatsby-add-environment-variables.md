@@ -39,3 +39,5 @@ This is only if you want to build on local.
 If you are using any providers like Netlify use the Linux version. You will also need to add environment variables in the service provider.
 
 For Netlify it is in `Site Settings > Build&Deploy > Environment`
+
+Testing netlify inc builds
