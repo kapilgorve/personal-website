@@ -1,6 +1,6 @@
 ---
 title: 'GatsbyJs - Add environment variables'
-tags: ['GatsbyJs','Windows10','Linux']
+tags: ['GatsbyJs','Windows10','Linux', 'ReactJs']
 type: 'blog'
 date: '2020-04-20'
 description: 'How to add environment variables for gatsby in Windows and Linux'
