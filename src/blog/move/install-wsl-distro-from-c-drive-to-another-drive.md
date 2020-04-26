@@ -25,3 +25,5 @@ D:\work>
 * `lxrunoffline move -n Ubuntu-18.04 -d G:\wsl\` . Move your distro to another drive. My distro name here is `Ubuntu-18.04`. I am moving it to `G drive` and `wsl` folder inside it. It would take some time to finish moving.
 
 You can use the same move command to move your distro from default location to a different location inside C Drive.
+
+Edit - As someone pointed out on Reddit. You can also go to Settings > Apps > Your distro. Click on your distro name and it will show option to move to a different drive. 
