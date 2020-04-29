@@ -5,6 +5,10 @@ type: 'note'
 date: '2020-04-29'
 description: 'Move WSL distro from default installed location'
 ---
+
+## Edit -
+As pointed out by `lxrunoffline` [author](https://github.com/DDoSolitary/LxRunOffline/issues/90), it is supported to move WSL2 distro. No conversion needed. This post is applicable for older `lxrunoffline` versions. If you are on latest version follow this post - [/blog/install-move-wsl-distro-from-c-drive-to-another-drive/](/blog/install-move-wsl-distro-from-c-drive-to-another-drive/)
+
 You can use `LxRunOffline` tool to move WSL 1 distros. I faced errors for moving wsl2 distro. You need to convert your distro to v1 and then move. Then convert again to v2.
 
 ## Move WSL2 distro from C drive
@@ -25,3 +29,4 @@ D:\work>
 * `wsl --set-version Ubuntu-18.04 2` This will convert your distro from v1 to v2 again.
 
 That's it. You can start to use your distro again.
+
