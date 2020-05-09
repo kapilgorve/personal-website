@@ -7,10 +7,11 @@ description: 'aws cli s3 cheatsheet'
 ---
 
 ### List buckets
-
 ```bash
 aws s3 ls
+```
 
+```bash
 Output:
 Microsoft Windows [Version 10.0.19041.207]
 (c) 2020 Microsoft Corporation. All rights reserved.
@@ -23,10 +24,10 @@ D:\work>
 ```
 
 ### List files and folders inside a bucket.
-
 ```bash
 aws s3 ls kapilgorve/
-
+```
+```bash
 Output:
 D:\work>aws s3 ls kapilgorve/
                            PRE all/
