@@ -11,16 +11,67 @@
 
 const path = require("path")
 const { createFilePath, createFileNode } = require(`gatsby-source-filesystem`);
-exports.onCreateNode = ({ node, getNode, actions }) => {
-    const { createNodeField } = actions
-    if (node.internal.type === `MarkdownRemark`) {
-        const slug = createFilePath({ node, getNode, basePath: `pages` })
-        createNodeField({
-            node,
-            name: `slug`,
-            value: slug,
-        })
+
+const { createRemoteFileNode } = require("gatsby-source-filesystem")
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+
+  createTypes(`
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+      featuredImg: File @link(from: "featuredImg___NODE")
     }
+
+    type Frontmatter {
+      title: String!
+      featuredImgUrl: String
+    }
+  `)
+}
+
+
+exports.onCreateNode = async ({ node, getNode, actions, store, cache, createNodeId }) => {
+  // if (node.internal.type === `MarkdownRemark`) {
+  //   if(node.frontmatter.featuredImgUrl) {
+  //     console.log(node);
+  //   }
+  // }
+  const { createNodeField, createNode } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+
+    if (
+      node.frontmatter
+    ) {
+      if (node.frontmatter.featuredImgUrl) {
+        {
+
+          let fileNode = await createRemoteFileNode({
+            url: node.frontmatter.featuredImgUrl, // string that points to the URL of the image
+            parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
+            createNode, // helper function in gatsby-node to generate the node
+            createNodeId, // helper function in gatsby-node to generate the node id
+            cache, // Gatsby's cache
+            store, // Gatsby's redux store
+          })
+
+          // if the file was created, attach the new node to the parent node
+          if (fileNode) {
+            node.featuredImg___NODE = fileNode.id
+          }
+        }
+      }
+    }
+
+  }
+
 }
 
 exports.createPages = ({ actions, graphql }) => {
@@ -56,7 +107,7 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     // Create blog posts pages.
-    const blogPosts = result.data.allMarkdownRemark.edges.filter( ({node}) => node.frontmatter.type === 'blog' );
+    const blogPosts = result.data.allMarkdownRemark.edges.filter(({ node }) => node.frontmatter.type === 'blog');
 
     blogPosts.forEach((post, index) => {
       const previous = index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
@@ -73,7 +124,7 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
 
-    const portfolioPosts = result.data.allMarkdownRemark.edges.filter( ({node}) => node.frontmatter.type === 'portfolio' );
+    const portfolioPosts = result.data.allMarkdownRemark.edges.filter(({ node }) => node.frontmatter.type === 'portfolio');
 
     portfolioPosts.forEach((post) => {
       createPage({
@@ -85,7 +136,7 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
 
-    const notePosts = result.data.allMarkdownRemark.edges.filter( ({node}) => node.frontmatter.type === 'note' );
+    const notePosts = result.data.allMarkdownRemark.edges.filter(({ node }) => node.frontmatter.type === 'note');
 
     notePosts.forEach((post) => {
       createPage({
