@@ -39,7 +39,7 @@ const SEO = ({
         twitter: twitter,
       }
 
-      console.log(seo.image);
+      console.log(defaultTitle ,seo.image);
 
       return (
         <>
