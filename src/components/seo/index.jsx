@@ -36,7 +36,9 @@ const SEO = ({
         image: image || defaultImage,
         url: `${siteUrl}${pathname ? pathname : ''}`,
         keywords: keywords || defaultKeywords,
+        twitter: twitter,
       }
+
       return (
         <>
           <Helmet title={seo.title} titleTemplate={titleTemplate}>
@@ -48,16 +50,16 @@ const SEO = ({
             {/* Twitter meta tags */}
             <meta name="twitter:title" content={seo.title} />
             <meta name="twitter:description" content={seo.description} />
-            <meta name="twitter:site" content={twitter} />
-            <meta name="twitter:creator" content={twitter} />
-            <meta name="twitter:image" content={image} />
+            <meta name="twitter:site" content={seo.twitter} />
+            <meta name="twitter:creator" content={seo.twitter} />
+            <meta name="twitter:image" content={seo.image} />
             <meta name="twitter:card" content="summary_large_image" />
 
             {/* OpenGraph/Facebook tags */}
             <meta property="og:title" content={seo.title} />
             <meta property="og:description" content={seo.description} />
             <meta property="og:image" content={seo.image} />
-            <meta name="og:site_name" content={seo.defaultTitle} />
+            <meta name="og:site_name" content={defaultTitle} />
             <meta property="og:url" content={seo.url} />
             {(isArticle ? true : null) && (
               <meta property="og:type" content="article" />
@@ -68,6 +70,7 @@ const SEO = ({
             <html lang="en" />
             <meta name="author" content={author} />
             <meta name="kyewords" content={seo.keywords} />
+            <meta name="content" content={seo.description} />
             {tags && <meta name="tags" content={tags} />}
             {date && <meta name="date" content={date} />}
           </Helmet>
