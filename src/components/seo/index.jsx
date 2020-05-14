@@ -39,6 +39,8 @@ const SEO = ({
         twitter: twitter,
       }
 
+      console.log(seo.image);
+
       return (
         <>
           <Helmet title={seo.title} titleTemplate={titleTemplate}>
