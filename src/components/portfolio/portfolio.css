@@ -24,8 +24,6 @@
   font-size: 1.6rem;
   text-align: center;
   background: linear-gradient(to right, #cc2b5e, rgba(24, 0, 80, 0.89));
-  background-clip: text;
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .portfolio .card {
