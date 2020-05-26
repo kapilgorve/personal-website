@@ -80,6 +80,7 @@ const BlogPost = ({ data }) => {
         content={post.html}
         contentComponent={HTMLContent}
         description={description}
+        date={date}
         helmet={<SEO
             title={title}
             description={description}
