@@ -25,9 +25,20 @@ Create a container and three children. These three children each will occupy 33%
 ```
 So it will look like this.
 ![](./html.jpg)
+Before we make changes, we are going to write some small tests to validate our efforts. This will allow us to automate checking that everything is as expected, instead of manually reloading the page every time we make a change to ensure nothing broke. We will use [cypress](https://www.cypress.io/) for these examples, a common dom tester.
 
+```js
+it('Should have a div width of 33%', () => {
+  cy.get('.container').then($container => {
+       cy.get('.item').then($item => {
+            expect($item.width()).to.eql($container.width() / 3);
+        })
+  })
+});    
+```
+This grabs the first item in the container ,and confirms that the width of the item is one third of the container. This test should fail showing us that the item's width is the same as the container's.
 
-Let's add `display:grid` property to the container. We will use `grid-template-columns` property to specify children responsive widths.
+Let's add `display:grid` property to the container to make the test pass. We will use `grid-template-columns` property to specify children responsive widths.
 
 ```css
 .container {
@@ -41,7 +52,21 @@ Now it will look like this -
 
 ![](./columns.jpg)
 
-Using `grid-template-columns` you can specify number of columns and their widths for a grid container element. What if you want to add some gap between those columns without specifying external margin ? We can use `grid-gap` for that. Let's add 20px gap between these columns.
+Using `grid-template-columns` you can specify number of columns and their widths for a grid container element. What if you want to add some gap between those columns without specifying external margin ? Let's modify our test and then we can use `grid-gap` for that. 
+
+```js
+it('Should have a div width of 33% minus the gap', () => {
+  cy.get('.container').then($container => {
+      const gap = parseInt(Cypress.$('.container').css('grid-gap'));
+      const totalGap = $container.children.length * gap;
+      cy.get('.item').then($item => {
+           expect(Math.round($item.width())).to.eql(Math.round(($container.width() - totalGap) / 3));
+      })
+  })
+});
+```
+Here, we pull the gap value from the css, then use that to calculate the expecting width. We are rounding the values to deal with floating point discrepancies, since we don't care about fractions of pixels.
+Let's add 20px gap between these columns.
 ```css
 .container {
     display: grid;
