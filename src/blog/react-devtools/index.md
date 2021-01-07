@@ -7,7 +7,7 @@ description: 'React Devtools: Intro, Setup, Usage, Profiler '
 ---
 
 # Guide to React DevTools
-!['cover'](./rdtcover.jpg)
+!['cover'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/all/rdtcover.jpg)
 
 React Developers Tools is a Browser Extension that makes debugging easy and a developer's life simple. It allows you to inspect the React component hierarchy providing a view of the component tree and the current state & props of each component.
 We will learn how to utilize DevTools in debugging React and React Native app. Let's get started.
@@ -54,32 +54,32 @@ You can browse through the component tree and get a better understanding of the 
 #### Check props that a component is receiving at a time.
 Selected React elements have a real-time view of the instance’s state, props, and hooks. This is great for debugging!
 
-!['props component'](./comp-props.png)
+!['props component'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/all/comp-props.png)
 
 ### Component stacks
 Render stack shows where the props are coming from so it's easier to debug. It also provides a way to log warnings that include the React **component stack**.
 
-!['props component'](./comp-stack.png)
+!['props component'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/all/comp-stack.png)
 
 #### Component filters
 Large component trees can sometimes be hard to navigate. DevTools now provides a way to filter components so that you can hide ones you're not interested in seeing.
 
-!['props component'](./comp-filter.gif)
+!['props component'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/all/comp-filter.gif)
 
 #### "Rendered by" list
 `"Rendered by"` list will reveal the history of props and where they are coming from. In React, an element's "owner" refers to the thing that rendered it. Sometimes an element's parent is also its owner, but usually, they're different. This distinction is important because props come from owners.
 DevTools adds a new `"rendered by"` list in the right-hand pane that allows you to quickly step through the list of owners to speed up your debugging.
 
-!['props component'](./rendered-by.gif)
+!['props component'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/all/rendered-by.gif)
 
 #### Owners tree
 The inverse of the "rendered by" list is called the "owners tree". Owners tree will show a list of things rendered by a particular component. Just double click a component and it will show all the things *it owns*.
 
-!['props component'](./owner-tree.gif)
+!['props component'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/all/owner-tree.gif)
 
 #### Support for React Hooks, including inspecting nested object.
 Hooks now have the same level of support as props and state: values can be edited, arrays and objects can be drilled into, etc.
-!['devtools component'](./devtools-v4-comp.png)
+!['devtools component'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/all/devtools-v4-comp.png)
 
 ## Profiler
 A Profiler is a powerful tool for performance tuning React Components. The Profiler measures how often a React application renders and what the “cost” of rendering is. By "cost", I mean that when each component rendered, how many times it got rendered and at what speed. It collects timing information about components to explain how fast or your slow app is.
@@ -97,12 +97,12 @@ The profiler runs for as long as your application renders until you hit the stop
 #### Flamegraph
 Each bar in the chart represents a React component. The size and color of the bar represent how long it took to render the component and its children. (The width of a bar represents how much time was spent when the component last rendered and the color represents how much time was spent as part of the current commit.)
 
-!['flamegraph'](./flamegraph.png)
+!['flamegraph'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/all/flamegraph.png)
 
 #### Ranked Chart
 The ranked chart view of representing performance shows a React component in bar format. It is arranged in descending order, with the components that took the longest to render at the top. A component's rendering time also includes the time it took to render the children components.
 
-!['rankedchart'](./rankedchart.png)
+!['rankedchart'](https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/all/rankedchart.png)
 
 #### Interactions
 Interactions are used for tracing the cause of an update. “Interactions” traced with this API will also be shown in the profiler. Example: *Scroll to row 200*, *Scroll to row 300*, etc.
