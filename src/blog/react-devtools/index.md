@@ -2,7 +2,7 @@
 title: 'Intro to React Devtools'
 tags: ['ReactJs', 'Javascript']
 type: 'blog'
-date: '2021-07-01'
+date: '2021-01-07'
 description: 'React Devtools: Intro, Setup, Usage, Profiler '
 ---
 
