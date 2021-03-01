@@ -1,14 +1,22 @@
+---
+title: 'Guide to MobX with React'
+tags: ['ReactJs', 'Javascript', 'Mobx']
+type: 'blog'
+date: '2020-01-07'
+description: 'Getting started with Mobx'
+---
+
 # Guide to MobX with React
 ![cover image](./mobx-cover.jpg)
 
-As we all know state management is the most important and core part of any react application and as react is just a UI library there is a need for something to take care of the state of our app. State management can be troublesome and it is easy to create unmanageable react applications because of inconsistent state. 
+As we all know state management is the most important and core part of any react application and as react is just a UI library there is a need for something to take care of the state of our app. State management can be troublesome and it is easy to create unmanageable react applications because of inconsistent state.
 
 ## What is State Management?
 A state is just the data that your app is dealing with. State saves the data that needs to be rendered and it influences how the component gets rendered.
 State management is the process of managing that data. Monitoring and retrieving data in a particular app can be difficult that's where state management libraries come into play. There are multiple ways to manage states like Redux and Context but we will talk precisely about MobX here.
 
 ## What is MobX?
-MobX is a simple, scalable and battle-tested state management solution. It's a standalone library that can be used with any javascript framework. React and MobX is really powerful together and work as a complete framework. MobX provides the mechanism to store and update the application state that React then uses to render the components. 
+MobX is a simple, scalable and battle-tested state management solution. It's a standalone library that can be used with any javascript framework. React and MobX is really powerful together and work as a complete framework. MobX provides the mechanism to store and update the application state that React then uses to render the components.
 
 ## Core concept
 MobX at its core has three important concepts: Observables, Actions, and Reactions. A Store contains these three which then is used by the React application.
@@ -16,7 +24,7 @@ MobX at its core has three important concepts: Observables, Actions, and Reactio
 > Find minimal state (observable state), derive everything (derived state) and never turn the state into more state.
 
 ## Observables
-The observable state is one of the main concepts of MobX. The idea behind this concept is to make an object able to emit new changes on them to the observers. You can achieve this with the `@observable` decorator.  
+The observable state is one of the main concepts of MobX. The idea behind this concept is to make an object able to emit new changes on them to the observers. You can achieve this with the `@observable` decorator.
 For example, imagine you have a variable named firstName that you expect to change on any event. You can make it observable like so:
 
 ```javascript
@@ -98,7 +106,7 @@ autorun( reaction => {
   reaction.dispose();
 } );
 ```
-The return value from autorun is a disposer function, which can be used to dispose of the autorun when you no longer need it. 
+The return value from autorun is a disposer function, which can be used to dispose of the autorun when you no longer need it.
 
 ### 2. when
 `when` observes & runs the given predicate until it returns true. Once that happens, the given effect is executed and the autorunner is disposed. The function returns a disposer to cancel the autorunner prematurely.
@@ -126,8 +134,8 @@ class MyResource {
 ```
 
 ### 3. reaction
-A variation of `autorun` which takes two functions: the data function and the effect function. The first one (the data function) is tracked and returns data that is used as input for the second one, the effect function.  
-Unlike autorun, the side effect runs only after the data expression returns a new value for the first time.  
+A variation of `autorun` which takes two functions: the data function and the effect function. The first one (the data function) is tracked and returns data that is used as input for the second one, the effect function.
+Unlike autorun, the side effect runs only after the data expression returns a new value for the first time.
 The second function (the effect function) passed to reaction will receive two arguments when invoked. The first argument is the value returned by the data function. The second argument is the current reaction, which can be used to dispose of the reaction during execution.
 In the following example, reactionDemo will react to the change in the counter count. When invoked reaction, the second argument can use as a disposer. The following example shows a reaction that is invoked only once.
 ```javascript
@@ -164,7 +172,7 @@ We will understand the working of MobX by creating an application in three simpl
 > The application uses `openlibrary.org` API to fetch books by searching author names and adding them to favorites. See code: https://codesandbox.io/embed/mobx-demo-69c47
 
 ## Step 1. Defining state and make it observable
-We are going to search for the author's name and save the result. Then we will click on books and add them to our favorites. *Comments* are self-explanatory: 
+We are going to search for the author's name and save the result. Then we will click on books and add them to our favorites. *Comments* are self-explanatory:
 ```javascript
 //importing observables and decorate
 import { decorate, observable } from "mobx";
@@ -192,7 +200,7 @@ export default new Store();
 ```
 
 ## Step 2. Creating a View that will observe for state changes
-Create the `SearchBooks` component that will accept the author's name as text input and show the API response as a list. It will also show the number of books added and their names. 
+Create the `SearchBooks` component that will accept the author's name as text input and show the API response as a list. It will also show the number of books added and their names.
 
 1. Boilerplate for SearchBooks component
 ```javascript
@@ -247,7 +255,7 @@ return (
               </li>
             );
           })}
-  
+
 );
 ```
 > Go to [openlibrary.org](https://openlibrary.org/) to learn more about api response.
@@ -363,7 +371,7 @@ return (
 );
 ```
 
-Now, the last thing we have to do is provide store in `Provider` to the root component. Our root file will look like this: 
+Now, the last thing we have to do is provide store in `Provider` to the root component. Our root file will look like this:
 ```javascript
 import React from "react";
 import ReactDOM from "react-dom";
@@ -374,7 +382,7 @@ import SearchBooks from "./SearchBooks";
 
 import "./styles.css";
 
-//provide store as a provider so that our component can use it. 
+//provide store as a provider so that our component can use it.
 function App() {
   return (
     <Provider store={store}>
