@@ -104,7 +104,7 @@ BlogPost.propTypes = {
 
 export default BlogPost
 
-export const pageQuery = graphql`
+const pageQuery = graphql`
   query BlogPostByID($slug: String!) {
     site {
       siteMetadata {

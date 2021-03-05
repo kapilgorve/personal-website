@@ -102,7 +102,7 @@ const NotePost = ({ data }) => {
 
 export default NotePost
 
-export const pageQuery = graphql`
+const pageQuery = graphql`
   query NotePostByID($slug: String!) {
     site {
       siteMetadata {
