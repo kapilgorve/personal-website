@@ -12,6 +12,13 @@ module.exports = {
     defaultKeywords: 'ReactJs,NodeJs,React Native,GatsbyJs',
     ogurl: 'https://friendly-heyrovsky-86d9f9.netlify.app/opengraph'
   },
+  flags: {
+    PRESERVE_WEBPACK_CACHE: true,
+    FAST_DEV: true,
+    DEV_SSR: true,
+    PARALLEL_SOURCING: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {

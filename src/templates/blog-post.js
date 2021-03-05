@@ -7,7 +7,7 @@ import Content, { HTMLContent } from '../components/content'
 import { extractCoverUrl } from '../utils/cover'
 import SEO from '../components/seo'
 
-export class BlogPostTemplate extends Component {
+class BlogPostTemplate extends Component {
   state = {
     DisqusWrap: null,
     CommentCountWrap: null,
@@ -104,7 +104,7 @@ BlogPost.propTypes = {
 
 export default BlogPost
 
-export const pageQuery = graphql`
+const pageQuery = graphql`
   query BlogPostByID($slug: String!) {
     site {
       siteMetadata {

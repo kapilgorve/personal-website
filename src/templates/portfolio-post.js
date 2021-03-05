@@ -43,7 +43,7 @@ const PortfolioPost = ({ data }) => {
 }
 
 
-export const pageQuery = graphql`
+const pageQuery = graphql`
   query PortfolioPostByID($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
