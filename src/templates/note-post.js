@@ -7,7 +7,7 @@ import Content, { HTMLContent } from '../components/content'
 import { extractCoverUrl } from '../utils/cover'
 import SEO from '../components/seo'
 
-export class NotePostTemplate extends Component {
+class NotePostTemplate extends Component {
   state = {
     DisqusWrap: null,
     CommentCountWrap: null,
