@@ -85,7 +85,7 @@ const Contact = () => {
                 <div className="col-md-8">
                   <div className="icons">
                     <a
-                      href="https://www.linkedin.com/in/kapil-gorve/"
+                      href="https://www.linkedin.com/in/kapilgorve/"
                       target="blank"
                     >
                       <img src={linkedin} alt="Kapil Gorve LinkedIn Profile" />
