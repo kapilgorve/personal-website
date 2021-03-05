@@ -1,8 +1,8 @@
-<!-- ---
+---
 title: 'Forget HOC and render props, Use React hooks to share state and state logic between components'
 tags: ['ReactJs', 'Javascript']
 type: 'blog'
-date: '2020-03-08'
+date: '2021-03-05'
 description: 'How to use React hooks to share state'
 ---
 
@@ -62,7 +62,22 @@ export function useWindowSize() {
 ```
 ```jsx
 // filename: App.js
+export function App(){
+  function App() {
+  const { windowSize } = useWindowSize();
+  return (
+    <div className="App">
+      <h2>Window size: {windowSize} </h2>
+      <WindowsClass />
+    </div>
+  );
+}
 
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+}
+```
+Now you can access this `windowSize` data in any component of your app. No more sliding it down through props.
 
-
-``` -->
+## What's the gotcha ?
+You won't be able to set this shared state from multiple components. You can access the value in multiple components, but you won't be able to change it from multiple components. Shared state changing must happen in one place.
