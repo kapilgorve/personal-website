@@ -15,7 +15,7 @@ It's not possible though to have similar API. I am going to settle here for the 
 
 
 If you want to straight head out and play with the demo here you go.
-<iframe src="https://codesandbox.io/embed/y28ro3w45j?fontsize=14" title="Form Validation with React Hooks" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin" loading="lazy"></iframe>
+<iframe src="https://codesandbox.io/embed/4m0fq?fontsize=14" title="Form Validation with React Hooks" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin" loading="lazy"></iframe>
 This is a basic React function component using hooks. Incase you have missed the `hooks` party.
 
 According to React docs-
@@ -34,9 +34,9 @@ export function FormInput(props) {
   }
 
   return (
-    <div style={inputWrap} >
-        <label>{props.label}</label>
+    <label htmlFor={props.label}>{props.label}</label>
       <input
+        id={props.label}
         style={inputStyle}
         value={inputValue}
         onChange={handleInput}
@@ -71,6 +71,7 @@ We declare two more state variables
 
 ```jsx
     <input
+        id={props.label}
         style={inputStyle}
         value={inputValue}
         onChange={handleInput}
@@ -81,15 +82,108 @@ We add a handler for `onBlur`. When a user touches the input and leaves the inpu
 
 ```jsx
   <input
+        id={props.label}
         style={inputStyle}
         value={inputValue}
         onChange={handleInput}
         onBlur={ ()=> setTouched(true)}
     />
-      { touched && !inputValue &&  <p style={{ color: 'red' }}>Please enter value</p>}
+      { touched && !inputValue &&  <p style={{ color: 'red' }}>Please enter a value.</p>}
 ```
 
 Let's go one more step and validate input and display an error if it is invalid according to us. We don't want to bother user unless they have typed the value and then left input. I get pissed by instant errors which show up even when I am not finished. So let's give our user a chance first without declaring them stupid.
+
+Let's set up a bunch of react tests to make sure we handle all the relevant use cases:
+```js
+import React from "react";
+import { render, fireEvent, cleanup } from "@testing-library/react";
+import { toBeVisible } from "@testing-library/jest-dom/matchers";
+
+import FormInput from "./FormInput";
+
+expect.extend({ toBeVisible });
+
+describe("FormInput", () => {
+  afterEach(cleanup);
+
+  it("does not show validation warnigns on initial load", () => {
+    const { queryByText } = render(<FormInput />);
+    expect(queryByText("Please enter valid value.")).toBeNull();
+  });
+
+  it("shows invalid value when number input is not a number", () => {
+    const { getByLabelText, queryByText } = render(
+      <FormInput required={true} type="number" label="Pin" />
+    );
+    fireEvent.change(getByLabelText("Pin"), {
+      target: { value: "a52" }
+    });
+    fireEvent.blur(getByLabelText("Pin"));
+    expect(queryByText("Please enter a valid value.")).toBeVisible();
+  });
+
+  it("does not show invalid value when number input is a number", () => {
+    const { getByLabelText, queryByText } = render(
+      <FormInput required={true} type="number" label="Pin" />
+    );
+    fireEvent.change(getByLabelText("Pin"), {
+      target: { value: "52" }
+    });
+    fireEvent.blur(getByLabelText("Pin"));
+    expect(queryByText("Please enter valid value.")).toBeNull();
+  });
+
+  it("Shows invalid value when email input is NOT a valid email", () => {
+    const { getByLabelText, queryByText } = render(
+      <FormInput required={true} type="email" label="Email" />
+    );
+    fireEvent.change(getByLabelText("Email"), {
+      target: { value: "52" }
+    });
+    fireEvent.blur(getByLabelText("Email"));
+    expect(queryByText("Please enter a valid value.")).toBeVisible();
+  });
+
+  it("does not show invalid value when email input is a valid email", () => {
+    const { getByLabelText, queryByText } = render(
+      <FormInput required={true} type="email" label="Email" />
+    );
+    fireEvent.change(getByLabelText("Email"), {
+      target: { value: "spam@gmail.com" }
+    });
+    fireEvent.blur(getByLabelText("Email"));
+    expect(queryByText("Please enter a valid value.")).toBeNull();
+  });
+
+  it("shows request for value when input is requried", () => {
+    const { getByLabelText, queryByText } = render(
+      <FormInput required={true} type="email" label="Email" />
+    );
+    fireEvent.change(getByLabelText("Email"), {
+      target: { value: "" }
+    });
+    fireEvent.blur(getByLabelText("Email"));
+    expect(queryByText("Please enter a value.")).toBeVisible();
+  });
+
+  it("doesn't show request for value when input is not requried", () => {
+    const { getByLabelText, queryByText } = render(
+      <FormInput required={false} type="email" label="Email" />
+    );
+    fireEvent.change(getByLabelText("Email"), {
+      target: { value: "" }
+    });
+    fireEvent.blur(getByLabelText("Email"));
+    expect(queryByText("Please enter a value.")).toBeNull();
+  });
+});
+
+
+
+```
+
+
+
 ```jsx
 
 App.js -
@@ -119,13 +213,14 @@ App.js -
 ....
 
      <input
+        id={props.label}
         style={inputStyle}
         value={inputValue}
         onChange={handleInput}
         onBlur={ ()=> setTouched(true)}
       />
-      {props.required && touched && !inputValue &&  <p style={{ color: 'red' }}>Please enter value</p>}
-      {touched && !isValid &&   <p style={{ color: 'red' }}>Please enter valid value.</p>}
+      {props.required && touched && !inputValue &&  <p style={{ color: 'red' }}>Please enter a value.</p>}
+      {touched && !isValid &&   <p style={{ color: 'red' }}>Please enter a valid value.</p>}
 
 ...
 
@@ -143,5 +238,5 @@ We validate the input value. We wait for user to leave the input and display the
 ``` <FormInput required={true} type="number" label="Pin"/> ```
 
 ## Why I prefer this approach ?
-I have debated this with lot of people about approach to form validations. For an enterprise client, Product Manager and others weighed in for validations after form submission. I don't llike instant validations as they sort of remind users that you don't know what you are doing. I neither like validations after form submission. In some cases this may mean entering a `captcha` input. These captchas could be straight up harassment for disabled people or with poor vision. I would like to take a middle approach. Let the user fill in the input and display a validation error after they have left the input.
+I have debated this with lot of people about approach to form validations. For an enterprise client, Product Manager and others weighed in for validations after form submission. I don't like instant validations as they sort of remind users that you don't know what you are doing. I neither like validations after form submission. In some cases this may mean entering a `captcha` input. These captchas could be straight up harassment for disabled people or with poor vision. I would like to take a middle approach. Let the user fill in the input and display a validation error after they have left the input.
 
