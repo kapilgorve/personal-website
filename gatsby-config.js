@@ -3,14 +3,14 @@ module.exports = {
     defaultTitle: 'Kapil Gorve',
     author: 'Kapil Gorve',
     defaultDescription: 'Freelance Frontend Developer | ReactJs,NodeJs,ReactNative.',
-    siteUrl: 'https://www.jskap.com/',
+    siteUrl: 'https://www.kapil.io/',
     defaultImage: 'https://kapilgorve.s3.ap-south-1.amazonaws.com/blog/covers/Kapil+Gorve+www.jskap.com-site-cover.jpg',
     social: {
       twitter: '@kapilgorve',
     },
     googleSiteVerification: 'wQ_f9X_15oprPRnRxUYGguIh0Hx7VaPbGECLUKMxgJI',
     defaultKeywords: 'ReactJs,NodeJs,React Native,GatsbyJs',
-    ogurl: 'https://friendly-heyrovsky-86d9f9.netlify.app/opengraph'
+    ogurl: 'https://ogurl.netlify.app/opengraph'
   },
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
@@ -97,8 +97,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.jskap.com/',
-        sitemap: 'https://www.jskap.com/sitemap.xml',
+        host: 'https://www.kapil.io/',
+        sitemap: 'https://www.kapil.io/sitemap.xml',
         policy: [{ userAgent: '*', disallow: '/portfolio/', disallow: '/portfolio/*' }]
       }
     },
