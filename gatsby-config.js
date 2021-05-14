@@ -20,6 +20,13 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
    },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-197008168-1",
+        head: true,
+      },
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-sitemap',
@@ -80,12 +87,6 @@ module.exports = {
       options: {
         name: `src`,
         path: `${__dirname}/src`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-197008168-1",
       },
     },
     {
