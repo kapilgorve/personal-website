@@ -16,6 +16,9 @@ const Header = () => (
     <Link to="/notes/" className="navbar-brand">
       Notes
     </Link>
+    <Link to="#contact" className="navbar-brand">
+      Contact
+    </Link>
   </nav>
 )
 
