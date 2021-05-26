@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import linkedin from '../../assets/linkedin.svg'
 import twitter from '../../assets/twitter.svg'
-import quora from '../../assets/quora.svg'
 import github from '../../assets/github-sign.svg'
 
 import './contact.css'

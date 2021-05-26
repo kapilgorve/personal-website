@@ -32,7 +32,6 @@ function Join() {
                     </label>
                     <input
                       className="form-control"
-                      type="text"
                       placeholder="Your email address..."
                       type="email"
                       name="member[email]"
@@ -41,12 +40,11 @@ function Join() {
                   </div>
                   <div className="form-group input-group-lg">
                     <input
-                      className="form-control"
                       type="submit"
                       value="Make Me Pro"
                       name="member[subscribe]"
                       id="member_submit"
-                      className="btn btn-lg btn-block btn-warning"
+                      className="form-control btn btn-lg btn-block btn-warning"
                     />
                   </div>
                 </form>
