@@ -1,0 +1,33 @@
+.join {
+    background: linear-gradient(to right, #cc2b5e, rgba(24, 0, 80, 0.89));
+    color: white;
+    text-align: center;
+}
+
+.join h2 {
+    padding-top: 3rem;
+    font-size: 2.5rem;
+    font-weight: 300;
+  }
+
+.join h3 {
+  font-size: 4rem;
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+.join h4 {
+    padding-top: 8px;
+    font-weight: 300;
+}
+
+.join #revue-embed {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.join input {
+    margin: 0px 12px;
+}
+
