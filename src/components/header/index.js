@@ -7,6 +7,9 @@ const Header = () => (
     <Link to="/" className="navbar-brand">
       Home
     </Link>
+    <Link to="/join/" className="navbar-brand">
+      Join Community
+    </Link>
     <Link to="/blog/" className="navbar-brand">
       Blog
     </Link>
