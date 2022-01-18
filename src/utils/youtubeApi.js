@@ -4,7 +4,17 @@ export async function getVideos() {
     try {
         const response = await fetch(url);
         const { items } = await response.json();
-        return items;
+        const sorted =  items.sort( (data1, data2) => {
+            if (data1.snippet.publishedAt < data2.snippet.publishedAt) {
+                return 1;
+            }
+            if (data1.snippet.publishedAt > data2.snippet.publishedAt) {
+                return -1;
+            }
+            return 0;
+        } );
+        console.log(sorted);
+        return sorted;
     } catch (error) {
         console.error(error);
     }
