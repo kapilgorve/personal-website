@@ -13,7 +13,6 @@ export async function getVideos() {
             }
             return 0;
         } );
-        console.log(sorted);
         return sorted;
     } catch (error) {
         console.error(error);
