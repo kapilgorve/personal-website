@@ -12,7 +12,7 @@ const Layout = ({ children }) => (
     <SEO />
     <Header />
     <div>{children}</div>
-    <Join />
+    {/* <Join /> */}
     < Contact />
   </>
 );
