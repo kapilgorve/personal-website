@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "author": "Kapil Gorve <kapilsg186@gmail.com>",
   "dependencies": {
+    "@giscus/react": "^3.0.0",
     "gatsby": "^3.0.2",
     "gatsby-image": "^3.0.0",
-    "gatsby-plugin-disqus": "^1.2.2",
     "gatsby-plugin-feed": "^3.0.0",
     "gatsby-plugin-google-analytics": "^3.0.0",
     "gatsby-plugin-manifest": "^3.0.0",

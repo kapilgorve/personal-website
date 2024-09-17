@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import Giscus from '@giscus/react'
 
 import Layout from '../components/layout'
 import Content, { HTMLContent } from '../components/content'
@@ -8,19 +9,6 @@ import { extractCoverUrl } from '../utils/cover'
 import SEO from '../components/seo'
 
 class NotePostTemplate extends Component {
-  state = {
-    DisqusWrap: null,
-    CommentCountWrap: null,
-  };
-
-  componentDidMount() {
-    import('../components/disquswrap/Disqus')
-      .then(component => this.setState({ DisqusWrap: component.default }));
-
-    import('../components/disquswrap/CommentCount')
-      .then(component => this.setState({ CommentCountWrap: component.default }));
-  }
-
   render() {
     const {
       content,
@@ -30,9 +18,7 @@ class NotePostTemplate extends Component {
       helmet,
       id
     } = this.props;
-    const { DisqusWrap, CommentCountWrap } = this.state;
     const PostContent = contentComponent || Content;
-    let disqusConfig = { identifier: id, title };
     return (
       <section className="blog">
         {helmet || ''}
@@ -43,10 +29,23 @@ class NotePostTemplate extends Component {
                 {title}
               </h1>
               <p>{date}</p>
-              {CommentCountWrap && <CommentCountWrap config={disqusConfig} placeholder={''} />}
               <div className="mt-3">
                 <PostContent content={content} />
-                {DisqusWrap && <DisqusWrap config={disqusConfig} />}
+                <Giscus
+                  id="comments"
+                  repo="kapilgorve/personal-website"
+                  repoId="MDEwOlJlcG9zaXRvcnkxNDk3NDcyNjY="
+                  category="Announcements"
+                  categoryId="DIC_kwDOCOz2Qs4Cijdk"
+                  mapping="pathname"
+                  term="Welcome to @giscus/react component!"
+                  reactionsEnabled="1"
+                  emitMetadata="0"
+                  inputPosition="top"
+                  theme="noborder_light"
+                  lang="en"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
