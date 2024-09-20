@@ -11,11 +11,11 @@ const Resume = () => (
       />
     <div className="resume" />
     <iframe
-      src="https://drive.google.com/file/d/1MGrJYay4srfelFWuIiM_CjlXhHHY59ys/preview"
+      src="https://drive.google.com/file/d/1b9p4LRD9ubUdM6qaQh2U0oFkcHDJRMNn/preview"
       type="application/pdf"
       height="768px"
       width="100%"
-      title="Kapil Gorve Resume"
+      title="Kapil Gorave Resume"
       loading="lazy"
     />
   </Layout>
