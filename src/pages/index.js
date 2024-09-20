@@ -38,8 +38,10 @@ class IndexPage extends React.Component {
 
 export const query = graphql`
 query IndexQuery {
-  allMarkdownRemark(filter: { frontmatter: { type: { in: ["note", "blog"] } } },
-  sort: { fields: [frontmatter___date], order: DESC }) {
+  allMarkdownRemark(
+    filter: {frontmatter: {type: {in: ["note", "blog"]}}}
+    sort: {frontmatter: {date: DESC}}
+  ) {
     totalCount
     edges {
       node {

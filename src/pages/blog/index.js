@@ -57,25 +57,27 @@ const titleStyle = {
 
 export const query = graphql`
   query BlogQuery {
-    allMarkdownRemark(filter: { frontmatter: { type: { eq: "blog" } } },
-    sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 240)
-          frontmatter {
-            title
-            tags
-            date
-          }
-          fields {
-            slug
-          }
+  allMarkdownRemark(
+    filter: {frontmatter: {type: {eq: "blog"}}}
+    sort: {frontmatter: {date: DESC}}
+  ) {
+    totalCount
+    edges {
+      node {
+        id
+        excerpt(pruneLength: 240)
+        frontmatter {
+          title
+          tags
+          date
+        }
+        fields {
+          slug
         }
       }
     }
   }
+}
 `
 
 export default BlogIndex

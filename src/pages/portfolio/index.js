@@ -22,25 +22,27 @@ export default PortfolioPage
 
 export const query = graphql`
   query PortFolioQuery {
-    allMarkdownRemark(filter: { frontmatter: { type: { eq: "portfolio" } } },
-    sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 240)
-          frontmatter {
-            title
-            path
-            tags
-            type
-            thumb
-          }
-          fields {
-            slug
-          }
+  allMarkdownRemark(
+    filter: {frontmatter: {type: {eq: "portfolio"}}}
+    sort: {frontmatter: {date: DESC}}
+  ) {
+    totalCount
+    edges {
+      node {
+        id
+        excerpt(pruneLength: 240)
+        frontmatter {
+          title
+          path
+          tags
+          type
+          thumb
+        }
+        fields {
+          slug
         }
       }
     }
   }
+}
 `
