@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: [`/portfolio/*`, '/portfolio/'],
+        excludes: [`/portfolio/*`, '/portfolio/'],
       }
     },
     'gatsby-plugin-netlify',
