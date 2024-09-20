@@ -3,17 +3,17 @@ import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const SEO = ({
-  title,
-  description,
-  image,
-  pathname,
-  isArticle,
-  titleTemplate,
-  keywords,
-  tags,
-  date,
-}) => {
+function SEO({
+  title = null,
+  description = null,
+  image = null,
+  pathname = null,
+  isArticle = false,
+  titleTemplate = null,
+  keywords = null,
+  tags = null,
+  date = null,
+}) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -48,7 +48,7 @@ const SEO = ({
 
   const seo = {
     title: title || defaultTitle,
-    titleTemplate: `%s - ${siteUrl}`,
+    titleTemplate: titleTemplate || `%s - ${siteUrl}`,
     description: description || defaultDescription,
     image: image || defaultImage,
     url: `${siteUrl}${pathname || ''}`,
@@ -57,7 +57,7 @@ const SEO = ({
   }
 
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate}>
+    <Helmet title={seo.title} titleTemplate={seo.titleTemplate}>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       <meta name="google-site-verification" content={googleSiteVerification} />
@@ -90,8 +90,6 @@ const SEO = ({
   )
 }
 
-export default SEO
-
 SEO.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
@@ -104,14 +102,4 @@ SEO.propTypes = {
   date: PropTypes.string,
 }
 
-SEO.defaultProps = {
-  title: null,
-  description: null,
-  image: null,
-  pathname: null,
-  isArticle: false,
-  titleTemplate: null,
-  keywords: null,
-  tags: null,
-  date: null,
-}
+export default SEO
