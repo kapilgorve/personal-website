@@ -13,14 +13,18 @@
   font-size: 1.2rem;
   color: var(--dark);
 }
+.contact p a {
+  color: inherit;
+}
 .contact .icons {
   display: flex;
   height: 100%;
   flex-wrap: wrap;
 }
-.contact a {
+.contact .icons a {
   margin: auto 2rem;
 }
+
 .contact img {
   height: 40px;
 }

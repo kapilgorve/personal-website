@@ -14,7 +14,6 @@ const titleStyle = {
 }
 
 const Contact = () => {
-
   return (
     <React.Fragment>
       <section id="contact" className="contact">
@@ -24,8 +23,12 @@ const Contact = () => {
               <h2 style={titleStyle}>Connect With Me!!</h2>
               <div className="row">
                 <div className="col-md-4">
-                  <p>+91 9922234778</p>
-                  <p>hi@kapil.io</p>
+                  <p>
+                    <a href="tel:+9199222778">+91 9922234778</a>
+                  </p>
+                  <p>
+                    <a href="mailto:hi@kapil.io">hi@kapil.io</a>
+                  </p>
                 </div>
                 <div className="col-md-8">
                   <div className="icons">
