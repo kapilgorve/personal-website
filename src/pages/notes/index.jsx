@@ -57,27 +57,27 @@ const titleStyle = {
 
 export const query = graphql`
   query NoteQuery {
-    allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "note" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      totalCount
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 240)
-          frontmatter {
-            title
-            tags
-            date
-          }
-          fields {
-            slug
-          }
+  allMarkdownRemark(
+    filter: {frontmatter: {type: {eq: "note"}}}
+    sort: {frontmatter: {date: DESC}}
+  ) {
+    totalCount
+    edges {
+      node {
+        id
+        excerpt(pruneLength: 240)
+        frontmatter {
+          title
+          tags
+          date
+        }
+        fields {
+          slug
         }
       }
     }
   }
+}
 `
 
 export default NoteIndex

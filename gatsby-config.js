@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: [`/portfolio/*`, '/portfolio/'],
+        excludes: [`/portfolio/*`, '/portfolio/'],
       }
     },
     'gatsby-plugin-netlify',
@@ -149,7 +149,7 @@ module.exports = {
             query: `
         {
           allMarkdownRemark(
-            sort: { order: DESC, fields: [frontmatter___date] },
+            sort: { frontmatter: {date: DESC} },
             filter: {frontmatter: {type: {nin: "portfolio"}}},
           ) {
             edges {
