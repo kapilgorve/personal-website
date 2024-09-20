@@ -15,6 +15,14 @@ const Resume = () => (
       type="application/pdf"
       height="768px"
       width="100%"
+      title="Kapil Gorve Resume"
+      loading="lazy"
+    />
+    <iframe
+      src="https://drive.google.com/uc?export=download&id=1b9p4LRD9ubUdM6qaQh2U0oFkcHDJRMNn"
+      type="application/pdf"
+      height="768px"
+      width="100%"
       title="Kapil Gorave Resume"
       loading="lazy"
     />
