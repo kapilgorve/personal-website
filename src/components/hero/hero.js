@@ -26,17 +26,16 @@ export const Hero = () => (
           <div className="col-md-6 me">
             <h1>Hi, I'm Kapil.</h1>
             <p>
+            Highly Skilled ReactJS Consultant. Building UX centric and Scalable B2B Web Solutions.
             Freelance Web developer working in Javascript stack.
-            My journey with web started from tinkering css in dev tools.
-            Then I did some design work and came back to web dev.
             I have worked on a variety of
             projects on web and mobile apps from design to development. I am a
-            full stack developer and designer.
+            full stack developer.
             </p>
             <p>
-              Need a Resume ?{' '}
+              Need my Profile ?{' '}
               <a target="_blank" href="/resume">
-                Kapil Gorve Resume
+                Kapil Gorve Profile
               </a>
             </p>
           </div>
@@ -52,10 +51,9 @@ export const Hero = () => (
           <div className="col-md-6 me">
             <p>
               {' '}
+              I build lean products. I build MVPs and prototypes for early stage Saas companies.
               I provide freelance services specializing in frontend development.
-              I started my frontend career with AngularJS and right now working
-              with React. I'm also familiar with other frontend frameworks.
-              I build MVPs, prototypes. I believe in choosing the best tool for the job.
+              I believe in choosing the best tool for the job.
               I build backends using NodeJs and NoSQL database MongoDB.
               <br/>
               <br/>
